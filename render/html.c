@@ -35,6 +35,7 @@
 #include "desktop/options.h"
 #include "desktop/selection.h"
 #include "desktop/scrollbar.h"
+#include "desktop/textarea.h"
 #include "image/bitmap.h"
 #include "render/box.h"
 #include "render/font.h"
@@ -343,7 +344,8 @@ html_create_html_data(html_content *c, const http_parameter *params)
 	c->iframe = NULL;
 	c->page = NULL;
 	c->font_func = &nsfont;
-	c->scrollbar = NULL;
+	c->drag_type = HTML_DRAG_NONE;
+	c->drag_owner.no_owner = true;
 	c->scripts_count = 0;
 	c->scripts = NULL;
 	c->jscontext = NULL;
@@ -1305,6 +1307,29 @@ html_object_callback(hlcache_handle *object,
 		/* These messages are for browser window layer.
 		 * we're not interested, so pass them on. */
 		content_broadcast(&c->base, event->type, event->data);
+		break;
+
+	case CONTENT_MSG_DRAG:
+	{
+		html_drag_type drag_type = HTML_DRAG_NONE;
+		union html_drag_owner drag_owner;
+		drag_owner.content = box;
+
+		switch (event->data.drag.type) {
+		case CONTENT_DRAG_NONE:
+			drag_type = HTML_DRAG_NONE;
+			drag_owner.no_owner = true;
+			break;
+		case CONTENT_DRAG_SCROLL:
+			drag_type = HTML_DRAG_CONTENT_SCROLL;
+			break;
+		case CONTENT_DRAG_SELECTION:
+			drag_type = HTML_DRAG_CONTENT_SELECTION;
+			break;
+		}
+		html_set_drag_type(c, drag_type, drag_owner,
+				event->data.drag.rect);
+	}
 		break;
 
 	default:
@@ -2629,8 +2654,8 @@ html_get_contextual_content(struct content *c,
  * \param c	html content to look inside
  * \param x	x-coordinate of point of interest
  * \param y	y-coordinate of point of interest
- * \param scrx	x-coordinate of point of interest
- * \param scry	y-coordinate of point of interest
+ * \param scrx	number of px try to scroll something in x direction
+ * \param scry	number of px try to scroll something in y direction
  * \return true iff scroll was consumed by something in the content
  */
 static bool
@@ -2655,6 +2680,14 @@ html_scroll_at_point(struct content *c, int x, int y, int scrx, int scry)
 		/* Pass into iframe */
 		if (box->iframe && browser_window_scroll_at_point(box->iframe,
 				x - box_x, y - box_y, scrx, scry) == true)
+			return true;
+
+		/* Pass into textarea widget */
+		if (box->gadget && (box->gadget->type == GADGET_TEXTAREA ||
+				box->gadget->type == GADGET_PASSWORD ||
+				box->gadget->type == GADGET_TEXTBOX) &&
+				textarea_scroll(box->gadget->data.text.ta,
+						scrx, scry) == true)
 			return true;
 
 		/* Pass into object */
@@ -2763,7 +2796,7 @@ static bool html_drop_file_at_point(struct content *c, int x, int y, char *file)
 		/* Redraw box. */
 		html__redraw_a_box(html, file_box);
 
-	} else if (html->bw != NULL) {
+	} else {
 		/* File dropped on text input */
 
 		size_t file_len;
@@ -2772,7 +2805,7 @@ static bool html_drop_file_at_point(struct content *c, int x, int y, char *file)
 		char *utf8_buff;
 		utf8_convert_ret ret;
 		unsigned int size;
-		struct browser_window *bw;
+		int bx, by;
 
 		/* Open file */
 		fp = fopen(file, "rb");
@@ -2828,13 +2861,13 @@ static bool html_drop_file_at_point(struct content *c, int x, int y, char *file)
 		size = strlen(utf8_buff);
 
 		/* Simulate a click over the input box, to place caret */
-		browser_window_mouse_click(html->bw,
-				BROWSER_MOUSE_PRESS_1, x, y);
-
-		bw = browser_window_get_root(html->bw);
+		box_coords(text_box, &bx, &by);
+		textarea_mouse_action(text_box->gadget->data.text.ta,
+				BROWSER_MOUSE_PRESS_1, x - bx, y - by);
 
 		/* Paste the file as text */
-		browser_window_paste_text(bw, utf8_buff, size, true);
+		textarea_drop_text(text_box->gadget->data.text.ta,
+				utf8_buff, size);
 
 		free(utf8_buff);
 	}

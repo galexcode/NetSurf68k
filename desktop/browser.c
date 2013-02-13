@@ -396,6 +396,8 @@ void browser_window_set_drag_type(struct browser_window *bw,
 		top_bw->drag_window = bw;
 
 		switch (type) {
+		case DRAGGING_SELECTION:
+			return;
 		case DRAGGING_SCR_X:
 		case DRAGGING_SCR_Y:
 		case DRAGGING_CONTENT_SCROLLBAR:
@@ -1543,6 +1545,25 @@ nserror browser_window_callback(hlcache_handle *c,
 	case CONTENT_MSG_POINTER:
 		/* Content wants to have specific mouse pointer */
 		browser_window_set_pointer(bw, event->data.pointer);
+		break;
+
+	case CONTENT_MSG_DRAG:
+	{
+		browser_drag_type bdt = DRAGGING_NONE;
+
+		switch (event->data.drag.type) {
+		case CONTENT_DRAG_NONE:
+			bdt = DRAGGING_NONE;
+			break;
+		case CONTENT_DRAG_SCROLL:
+			bdt = DRAGGING_CONTENT_SCROLLBAR;
+			break;
+		case CONTENT_DRAG_SELECTION:
+			bdt = DRAGGING_SELECTION;
+			break;
+		}
+		browser_window_set_drag_type(bw, bdt, event->data.drag.rect);
+	}
 		break;
 
 	default:

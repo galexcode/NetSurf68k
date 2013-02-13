@@ -1,8 +1,5 @@
 /*
- * Copyright 2003 Phil Mellor <monkeyson@users.sourceforge.net>
- * Copyright 2004 James Bursa <bursa@users.sourceforge.net>
- * Copyright 2004 Andrew Timmins <atimmins@blueyonder.co.uk>
- * Copyright 2004 John Tytgat <joty@netsurf-browser.org>
+ * Copyright 2013 Michael Drake <tlsa@netsurf-browser.org>
  *
  * This file is part of NetSurf, http://www.netsurf-browser.org/
  *
@@ -20,22 +17,28 @@
  */
 
 /** \file
- * HTML form text input handling (interface)
+ * Box tree treeview box replacement (interface).
  */
 
-#ifndef _NETSURF_RENDER_TEXTINPUT_H_
-#define _NETSURF_RENDER_TEXTINPUT_H_
-
-#include <stdbool.h>
-
-struct box;
-struct content;
 
 
-void textinput_textarea_click(struct content *c, browser_mouse_state mouse,
-		struct box *textarea, int box_x, int box_y, int x, int y);
+#ifndef _NETSURF_RENDER_BOX_TEXTAREA_H_
+#define _NETSURF_RENDER_BOX_TEXTAREA_H_
 
-void textinput_input_click(struct content *c, struct box *input,
-		int box_x, int box_y, int x, int y);
+
+#include "render/box.h"
+#include "render/html_internal.h"
+
+struct dom_node;
+
+/**
+ * Create textarea widget for a form element
+ *
+ * \param html    html content object
+ * \param box     box with gadget to be given textarea widget
+ * \param node    DOM node for form element
+ */
+bool box_textarea_create_textarea(html_content *html,
+		struct box *box, struct dom_node *node);
 
 #endif

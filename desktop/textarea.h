@@ -70,8 +70,6 @@ struct textarea_msg {
 };
 
 typedef struct textarea_setup {
-	textarea_flags flags;	/**< Setup flags */
-
 	int width;		/**< Textarea width */
 	int height;		/**< Textarea height */
 
@@ -105,7 +103,8 @@ typedef void(*textarea_client_callback)(void *data, struct textarea_msg *msg);
  * \param data	user specified data which will be passed to callbacks
  * \return Opaque handle for textarea or 0 on error
  */
-struct textarea *textarea_create(const textarea_setup *setup,
+struct textarea *textarea_create(const textarea_flags flags,
+		const textarea_setup *setup,
 		textarea_client_callback callback, void *data);
 
 /**
@@ -125,11 +124,21 @@ void textarea_destroy(struct textarea *ta);
 bool textarea_set_text(struct textarea *ta, const char *text);
 
 /**
+ * Insert the text in a text area at the caret, replacing any selection.
+ *
+ * \param ta Text area
+ * \param text UTF-8 text to set text area's contents to
+ * \return true on success, false on memory exhaustion or if ta lacks caret
+ */
+bool textarea_drop_text(struct textarea *ta, const char *text,
+		size_t text_length);
+
+/**
  * Extract the text from a text area
  *
  * \param ta Text area
  * \param buf Pointer to buffer to receive data, or NULL
- *            to read length required
+ *            to read length required (includes trailing '\0')
  * \param len Length (bytes) of buffer pointed to by buf, or 0 to read length
  * \return Length (bytes) written/required or -1 on error
  */
@@ -160,10 +169,11 @@ int textarea_get_caret(struct textarea *ta);
  * \param x	x coordinate of textarea top
  * \param y	y coordinate of textarea left
  * \param bg	background colour under textarea
+ * \param scale scale to render at
  * \param clip	clip rectangle
  * \param ctx	current redraw context
  */
-void textarea_redraw(struct textarea *ta, int x, int y, colour bg,
+void textarea_redraw(struct textarea *ta, int x, int y, colour bg, float scale,
 		const struct rect *clip, const struct redraw_context *ctx);
 
 /**
@@ -190,6 +200,7 @@ bool textarea_mouse_action(struct textarea *ta, browser_mouse_state mouse,
 /**
  * Gets the dimensions of a textarea
  *
+ * \param ta		textarea widget
  * \param width		if not NULL, gets updated to the width of the textarea
  * \param height	if not NULL, gets updated to the height of the textarea
  */
@@ -197,11 +208,38 @@ void textarea_get_dimensions(struct textarea *ta, int *width, int *height);
 
 /**
  * Set the dimensions of a textarea, causing a reflow and
- * emitting a redraw request.
+ * Does not emit a redraw request.  Up to client to call textarea_redraw.
  *
+ * \param ta		textarea widget
  * \param width 	the new width of the textarea
  * \param height	the new height of the textarea
  */
 void textarea_set_dimensions(struct textarea *ta, int width, int height);
+
+/**
+ * Set the dimensions and padding of a textarea, causing a reflow.
+ * Does not emit a redraw request.  Up to client to call textarea_redraw.
+ *
+ * \param ta		textarea widget
+ * \param width 	the new width of the textarea
+ * \param height	the new height of the textarea
+ * \param top		the new top padding of the textarea
+ * \param right		the new right padding of the textarea
+ * \param bottom	the new bottom padding of the textarea
+ * \param left		the new left padding of the textarea
+ */
+void textarea_set_layout(struct textarea *ta, int width, int height,
+		int top, int right, int bottom, int left);
+
+/**
+ * Scroll a textarea by an amount.  Only does anything if multi-line textarea
+ * has scrollbars.  If it scrolls, it will emit a redraw request.
+ *
+ * \param ta	textarea widget
+ * \param scrx	number of px try to scroll in x direction
+ * \param scry	number of px try to scroll in y direction
+ * \return true iff the textarea was scrolled
+ */
+bool textarea_scroll(struct textarea *ta, int scrx, int scry);
 #endif
 
