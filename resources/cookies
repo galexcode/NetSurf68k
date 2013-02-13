@@ -1,0 +1,13 @@
+# >PROGDIR:Resources/cookies
+# NetSurf cookies file.
+#
+# Lines starting with a '#' are comments, blank lines are ignored.
+#
+# All lines prior to "Version:	102" are discarded.
+#
+# Version	Domain	Domain from Set-Cookie	Path	Path from Set-Cookie	Secure	HTTP-Only	Expires	Last used	No destroy	Name	Value	Value was quoted	Scheme	URL	Comment
+Version:	102
+0	.abime.net	1	/	1	0	0	1392070467	1360537472	0	eablastvisit	1360534467	0	unused	unused	
+0	.abime.net	1	/	1	0	0	1392070488	1360537472	0	eablastactivity	0	0	unused	unused	
+0	.abime.net	1	/	1	0	1	1392070488	1360537472	0	eabuserid	12132	0	unused	unused	
+0	.abime.net	1	/	1	0	1	1392070488	1360537472	0	eabpassword	289c45c7a191ffdb62cf788245798000	0	unused	unused	

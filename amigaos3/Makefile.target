@@ -1,0 +1,79 @@
+# ----------------------------------------------------------------------------
+# amigaos3 target setup
+# ----------------------------------------------------------------------------
+
+override  HOST := windows
+override  NETSURF_USE_JS := NO
+override  NETSURF_FB_FONTPATH := /PROGDIR:Fonts/
+
+CC = m68k-amigaos-gcc
+CC += -s -O3 -fomit-frame-pointer -m68060 -mnobitfield 
+
+$(eval $(call feature_enabled,PNG,-DWITH_PNG,-lpng15,PNG (libpng)  ))
+$(eval $(call feature_enabled,GIF,-DWITH_GIF,-lnsgif,GIF (libnsgif)  ))
+$(eval $(call feature_enabled,BMP,-DWITH_BMP,-lnsbmp,BMP (libnsbmp)  ))
+
+ifeq ($(NETSURF_FB_FONTLIB),freetype)
+  CFLAGS += -DFB_USE_FREETYPE 
+  LDFLAGS += -lfreetype2
+endif
+
+CFLAGS += -Dnsamigaos3
+#resource path
+CFLAGS += '-DNETSURF_FB_RESPATH="PROGDIR:Resources"'
+
+CFLAGS += -std=c99 -I. -I/opt/share/include -s -Dsmall -mnobitfield \
+		-D_BSD_SOURCE \
+		-D_XOPEN_SOURCE=600 \
+		-D_POSIX_C_SOURCE=200112L \
+		-DPATH_MAX=1024
+
+LDFLAGS += -L/opt/share/lib -liconv 
+
+LDFLAGS += -Wl,--whole-archive -lnsfb -ldom -Wl,--no-whole-archive  -lexpat
+LDFLAGS += -lhubbub  -lcurl -lssl -lcrypto -lSDL_image
+
+LDFLAGS += -lturbojpeg -lpng15 -lz -lcss -lwapcaplet -lparserutils -lnsfb
+LDFLAGS += -lSDL -ltheme -ldebug  -lgl_dummy -lauto -lc2
+
+ifeq ($(NETSURF_USE_JS), YES)
+LDFLAGS += -ljs
+endif
+
+
+# ----------------------------------------------------------------------------
+# Source file setup
+# ----------------------------------------------------------------------------
+
+# Amiga sources 
+S_AMIGAOS3 := gui.c findfile.c 
+S_AMIGAOS3 += loadbitmap.c clipboard.c version.c
+S_AMIGAOS3_FBTK := osk.c event.c scroll.c
+S_AMIGAOS3 += font_$(NETSURF_FB_FONTLIB).c
+
+# FRAMEBUFFER sources 
+S_FRAMEBUFFER := framebuffer.c tree.c schedule.c		\
+	thumbnail.c misc.c bitmap.c filetype.c login.c 	\
+	localhistory.c system_colour.c clipboard.c
+
+S_FRAMEBUFFER_FBTK += fbtk.c fill.c bitmap.c user.c window.c text.c
+
+# Fonts sources
+ifeq ($(NETSURF_FB_FONTLIB),internal)
+S_FRAMEBUFFER += nsfont_regular.c nsfont_italic.c nsfont_bold.c		\
+	nsfont_italic_bold.c 
+endif
+
+S_FRAMEBUFFER := $(addprefix framebuffer/,$(S_FRAMEBUFFER)) $(addprefix framebuffer/fbtk/,$(S_FRAMEBUFFER_FBTK)) 
+S_AMIGAOS3 :=				$(addprefix amigaos3/,$(S_AMIGAOS3)) $(addprefix amigaos3/fbtk/,$(S_AMIGAOS3_FBTK))
+
+S_AMIGA_FB := $(S_FRAMEBUFFER) $(S_AMIGAOS3)
+
+# This is the final source build list
+# Note this is deliberately *not* expanded here as common and image
+#   are not yet available
+SOURCES = $(S_COMMON) $(S_IMAGE) $(S_BROWSER) $(S_AMIGA_FB) $(S_IMAGES)
+
+EXETARGET := NetSurf
+
+
