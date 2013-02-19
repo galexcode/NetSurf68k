@@ -1,20 +1,20 @@
 # Project: Netsurf
 # Compiler: m68-amiga
 # Compiler Type: MingW 3
-# Makefile created by wxDev-C++ 6.10.2 on 19-02-13 12:45
+# Makefile created by wxDev-C++ 6.10.2 on 19-02-13 15:37
 
 CPP       = m68k-amigaos-g++.exe
 CC        = m68k-amigaos-gcc.exe
 WINDRES   = windres.exe
-OBJ       = obj/ami_clipboard.o obj/findfile.o obj/font_freetype.o obj/gui.o obj/loadbitmap.o obj/misc.o obj/version.o obj/event.o obj/osk.o obj/scroll.o obj/text.o obj/content.o obj/content_factory.o obj/dirlist.o obj/fetch.o obj/hlcache.o obj/llcache.o obj/mimesniff.o obj/urldb.o obj/about.o obj/curl.o obj/data.o obj/file.o obj/resource.o obj/css.o obj/dump.o obj/internal.o obj/select.o obj/css_utils.o obj/browser.o obj/cookies.o obj/download.o obj/frames.o obj/history_core.o obj/history_global_core.o obj/hotlist.o obj/knockout.o obj/mouse.o obj/netsurf.o obj/options.o obj/plot_style.o obj/print.o obj/save_complete.o obj/save_text.o obj/scrollbar.o obj/desktop_search.o obj/searchweb.o obj/selection.o obj/sslcert.o obj/textarea.o obj/textinput.o obj/destktop_thumbnail.o obj/tree.o obj/tree_url_node.o obj/bmp.o obj/gif.o obj/ico.o obj/image.o obj/image_cache.o obj/jpeg.o obj/png.o obj/none.o obj/box.o obj/box_construct.o obj/box_normalise.o obj/font.o obj/form.o obj/html.o obj/html_forms.o obj/html_interaction.o obj/html_redraw.o obj/html_script.o obj/imagemap.o obj/layout.o obj/list.o obj/search.o obj/table.o obj/textplain.o obj/base64.o obj/container.o obj/corestrings.o obj/filename.o obj/filepath.o obj/hashtable.o obj/libdom.o obj/locale.o obj/log.o obj/memdebug.o obj/messages.o obj/nsurl.o obj/talloc.o obj/url.o obj/useragent.o obj/utf8.o obj/utils.o obj/challenge.o obj/content-disposition.o obj/content-type.o obj/generics.o obj/parameter.o obj/primitives.o obj/www-authenticate.o obj/bitmap.o obj/clipboard.o obj/fb_search.o obj/filetype.o obj/framebuffer.o obj/localhistory.o obj/login.o obj/schedule.o obj/system_colour.o obj/thumbnail.o obj/fb_tree.o obj/fbtk_bitmap.o obj/fbtk.o obj/fill.o obj/user.o obj/window.o obj/box_textarea.o
-LINKOBJ   = obj/ami_clipboard.o obj/findfile.o obj/font_freetype.o obj/gui.o obj/loadbitmap.o obj/misc.o obj/version.o obj/event.o obj/osk.o obj/scroll.o obj/text.o obj/content.o obj/content_factory.o obj/dirlist.o obj/fetch.o obj/hlcache.o obj/llcache.o obj/mimesniff.o obj/urldb.o obj/about.o obj/curl.o obj/data.o obj/file.o obj/resource.o obj/css.o obj/dump.o obj/internal.o obj/select.o obj/css_utils.o obj/browser.o obj/cookies.o obj/download.o obj/frames.o obj/history_core.o obj/history_global_core.o obj/hotlist.o obj/knockout.o obj/mouse.o obj/netsurf.o obj/options.o obj/plot_style.o obj/print.o obj/save_complete.o obj/save_text.o obj/scrollbar.o obj/desktop_search.o obj/searchweb.o obj/selection.o obj/sslcert.o obj/textarea.o obj/textinput.o obj/destktop_thumbnail.o obj/tree.o obj/tree_url_node.o obj/bmp.o obj/gif.o obj/ico.o obj/image.o obj/image_cache.o obj/jpeg.o obj/png.o obj/none.o obj/box.o obj/box_construct.o obj/box_normalise.o obj/font.o obj/form.o obj/html.o obj/html_forms.o obj/html_interaction.o obj/html_redraw.o obj/html_script.o obj/imagemap.o obj/layout.o obj/list.o obj/search.o obj/table.o obj/textplain.o obj/base64.o obj/container.o obj/corestrings.o obj/filename.o obj/filepath.o obj/hashtable.o obj/libdom.o obj/locale.o obj/log.o obj/memdebug.o obj/messages.o obj/nsurl.o obj/talloc.o obj/url.o obj/useragent.o obj/utf8.o obj/utils.o obj/challenge.o obj/content-disposition.o obj/content-type.o obj/generics.o obj/parameter.o obj/primitives.o obj/www-authenticate.o obj/bitmap.o obj/clipboard.o obj/fb_search.o obj/filetype.o obj/framebuffer.o obj/localhistory.o obj/login.o obj/schedule.o obj/system_colour.o obj/thumbnail.o obj/fb_tree.o obj/fbtk_bitmap.o obj/fbtk.o obj/fill.o obj/user.o obj/window.o obj/box_textarea.o
-LIBS      = -L"E:/opt/share/lib" -L"E:/usr/local/amiga/m68k-amigaos/lib" -L"E:/opt/share/lib" -Wl,--whole-archive -lnsfb -ldom -Wl,--no-whole-archive -lhubbub -lcss -lwapcaplet -lparserutils -lnsgif -lnsbmp -lcurl -lssl -lcrypto -liconv -lexpat -lSDL_image -lturbojpeg  -lpng15 -lfreetype2  -lz -lSDL -lgl_dummy -ltheme  -lauto -lc2 -ldebug  
+OBJ       = obj/ami_clipboard.o obj/findfile.o obj/font_freetype.o obj/gui.o obj/loadbitmap.o obj/misc.o obj/version.o obj/event.o obj/osk.o obj/scroll.o obj/text.o obj/content.o obj/content_factory.o obj/dirlist.o obj/fetch.o obj/hlcache.o obj/llcache.o obj/mimesniff.o obj/urldb.o obj/about.o obj/curl.o obj/data.o obj/file.o obj/resource.o obj/css.o obj/dump.o obj/internal.o obj/select.o obj/css_utils.o obj/browser.o obj/cookies.o obj/download.o obj/frames.o obj/history_core.o obj/history_global_core.o obj/hotlist.o obj/knockout.o obj/mouse.o obj/netsurf.o obj/options.o obj/plot_style.o obj/print.o obj/save_complete.o obj/save_text.o obj/scrollbar.o obj/desktop_search.o obj/searchweb.o obj/selection.o obj/sslcert.o obj/textarea.o obj/textinput.o obj/destktop_thumbnail.o obj/tree.o obj/tree_url_node.o obj/bmp.o obj/gif.o obj/ico.o obj/image.o obj/image_cache.o obj/jpeg.o obj/png.o obj/none.o obj/box.o obj/box_construct.o obj/box_normalise.o obj/font.o obj/form.o obj/html.o obj/html_forms.o obj/html_interaction.o obj/html_redraw.o obj/html_script.o obj/imagemap.o obj/layout.o obj/list.o obj/search.o obj/table.o obj/textplain.o obj/base64.o obj/container.o obj/corestrings.o obj/filename.o obj/filepath.o obj/hashtable.o obj/libdom.o obj/locale.o obj/log.o obj/memdebug.o obj/messages.o obj/nsurl.o obj/talloc.o obj/url.o obj/useragent.o obj/utf8.o obj/utils.o obj/challenge.o obj/content-disposition.o obj/content-type.o obj/generics.o obj/parameter.o obj/primitives.o obj/www-authenticate.o obj/bitmap.o obj/clipboard.o obj/fb_search.o obj/filetype.o obj/framebuffer.o obj/localhistory.o obj/login.o obj/schedule.o obj/system_colour.o obj/thumbnail.o obj/fb_tree.o obj/fbtk_bitmap.o obj/fbtk.o obj/fill.o obj/user.o obj/window.o obj/box_textarea.o obj/8bpp.o obj/16bpp.o obj/24bpp.o obj/32bpp-xbgr8888.o obj/32bpp-xrgb8888.o obj/api.o obj/generic.o obj/util.o obj/cursor.o obj/libnsfb.o obj/palette.o obj/able.o obj/ram.o obj/sdl.o obj/surface.o obj/fb_dump.o
+LINKOBJ   = obj/ami_clipboard.o obj/findfile.o obj/font_freetype.o obj/gui.o obj/loadbitmap.o obj/misc.o obj/version.o obj/event.o obj/osk.o obj/scroll.o obj/text.o obj/content.o obj/content_factory.o obj/dirlist.o obj/fetch.o obj/hlcache.o obj/llcache.o obj/mimesniff.o obj/urldb.o obj/about.o obj/curl.o obj/data.o obj/file.o obj/resource.o obj/css.o obj/dump.o obj/internal.o obj/select.o obj/css_utils.o obj/browser.o obj/cookies.o obj/download.o obj/frames.o obj/history_core.o obj/history_global_core.o obj/hotlist.o obj/knockout.o obj/mouse.o obj/netsurf.o obj/options.o obj/plot_style.o obj/print.o obj/save_complete.o obj/save_text.o obj/scrollbar.o obj/desktop_search.o obj/searchweb.o obj/selection.o obj/sslcert.o obj/textarea.o obj/textinput.o obj/destktop_thumbnail.o obj/tree.o obj/tree_url_node.o obj/bmp.o obj/gif.o obj/ico.o obj/image.o obj/image_cache.o obj/jpeg.o obj/png.o obj/none.o obj/box.o obj/box_construct.o obj/box_normalise.o obj/font.o obj/form.o obj/html.o obj/html_forms.o obj/html_interaction.o obj/html_redraw.o obj/html_script.o obj/imagemap.o obj/layout.o obj/list.o obj/search.o obj/table.o obj/textplain.o obj/base64.o obj/container.o obj/corestrings.o obj/filename.o obj/filepath.o obj/hashtable.o obj/libdom.o obj/locale.o obj/log.o obj/memdebug.o obj/messages.o obj/nsurl.o obj/talloc.o obj/url.o obj/useragent.o obj/utf8.o obj/utils.o obj/challenge.o obj/content-disposition.o obj/content-type.o obj/generics.o obj/parameter.o obj/primitives.o obj/www-authenticate.o obj/bitmap.o obj/clipboard.o obj/fb_search.o obj/filetype.o obj/framebuffer.o obj/localhistory.o obj/login.o obj/schedule.o obj/system_colour.o obj/thumbnail.o obj/fb_tree.o obj/fbtk_bitmap.o obj/fbtk.o obj/fill.o obj/user.o obj/window.o obj/box_textarea.o obj/8bpp.o obj/16bpp.o obj/24bpp.o obj/32bpp-xbgr8888.o obj/32bpp-xrgb8888.o obj/api.o obj/generic.o obj/util.o obj/cursor.o obj/libnsfb.o obj/palette.o obj/able.o obj/ram.o obj/sdl.o obj/surface.o obj/fb_dump.o
+LIBS      = -L"E:/opt/share/lib" -L"E:/usr/local/amiga/m68k-amigaos/lib" -L"E:/opt/share/lib" -Wl,--whole-archive -ldom -Wl,--no-whole-archive -lhubbub -lcss -lwapcaplet -lparserutils -lnsgif -lnsbmp -lcurl -lssl -lcrypto -liconv -lexpat -lSDL_image -lturbojpeg  -lpng15 -lfreetype2  -lz -lSDL -lgl_dummy -ltheme  -lauto -lc2 -ldebug  -s 
 INCS      = -I"E:/usr/local/amiga/m68k-amigaos/sys-include" -I"E:/usr/local/amiga/m68k-amigaos/include" -I"E:/opt/share/include" -I"E:/projects/netsurf" -I"E:/usr/local/amiga/m68k-amigaos/sys-include" -I"E:/usr/local/amiga/m68k-amigaos/include"
 CXXINCS   = -I"E:/" -I"E:/opt/share/include" -I"E:/projects/netsurf" -I"E:/usr/local/amiga/m68k-amigaos/sys-include" -I"E:/usr/local/amiga/m68k-amigaos/include"
 RCINCS    = --include-dir "E:/opt/share/include" -I"E:/usr/local/amiga/m68k-amigaos/bin" -I"E:/projects/netsurf"
 BIN       = Netsurf.exe
-DEFINES   =  -Dnsamigaos3 -DNETSURF_USE_JS=NO -DNETSURF_USE_BMP=YES -DNETSURF_USE_GIF=YES -DNETSURF_USE_JPEG=YES -DNETSURF_USE_PNG=YES -DWITH_PNG -DWITH_BMP -DWITH_GIF -DWITH_JPEG -DCROSS_COMPILE -DFB_USE_FREETYPE=YES -DNETSURF_USE_LIBICONV_PLUG=NO -DNETSURF_USE_ROSPRITE=NO -DNETSURF_USE_MNG=NO -DNETSURF_USE_WEBP=NO -DNETSURF_USE_NSSVG=NO -DNETSURF_FB_FRONTEND=sdl -DNETSURF_FB_RESPATH_sdl=/PROGDIR:Resources/ -DNETSURF_FB_FONTLIB=freetype -DNETSURF_STRIP_BINARY=YES -DNETSURF_USE_VIDEO=NO -DNETSURF_USE_MOZJS=NO -DNETSURF_FB_FONTPATH=/ProgDir:Fonts/ -DNETSURF_FB_RESPATH=/PROGDIR:Resources/ -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=200112L -DPATH_MAX=1024
-CXXFLAGS  = $(CXXINCS) $(DEFINES)   -O3
+DEFINES   =  -Dnsamigaos3 -DNETSURF_USE_JS=NO -DNETSURF_USE_BMP=YES -DNETSURF_USE_GIF=YES -DNETSURF_USE_JPEG=YES -DNETSURF_USE_PNG=YES -DWITH_PNG -DWITH_BMP -DWITH_GIF -DWITH_JPEG -DCROSS_COMPILE -DFB_USE_FREETYPE=YES -DNETSURF_USE_LIBICONV_PLUG=NO -DNETSURF_USE_ROSPRITE=NO -DNETSURF_USE_MNG=NO -DNETSURF_USE_WEBP=NO -DNETSURF_USE_NSSVG=NO -DNETSURF_FB_FRONTEND=sdl -DNETSURF_FB_RESPATH_sdl=/PROGDIR:Resources/ -DNETSURF_FB_FONTLIB=freetype -DNETSURF_STRIP_BINARY=YES -DNETSURF_USE_VIDEO=NO -DNETSURF_USE_MOZJS=NO -DNETSURF_FB_FONTPATH=/ProgDir:Fonts/ -DNETSURF_FB_RESPATH=/PROGDIR:Resources/ -D__BIG_ENDIAN_BGRA__ -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=200112L -DPATH_MAX=1024
+CXXFLAGS  = $(CXXINCS) $(DEFINES) -std=c99 -O3 -m68060 -mnobitfield -s   -O3
 CFLAGS    = $(INCS) $(DEFINES) -std=c99 -O3 -m68060 -mnobitfield -s   -O3
 GPROF     = gprof.exe
 RM        = rm -f
@@ -385,3 +385,51 @@ obj/window.o: $(GLOBALDEPS) framebuffer/fbtk/window.c framebuffer/fbtk/widget.h
 
 obj/box_textarea.o: $(GLOBALDEPS) render/box_textarea.c
 	$(CPP) -c render/box_textarea.c -o obj/box_textarea.o $(CXXFLAGS)
+
+obj/8bpp.o: $(GLOBALDEPS) amigaos3/libnsfb/src/plot/8bpp.c amigaos3/libnsfb/src/plot/common.c
+	$(CPP) -c amigaos3/libnsfb/src/plot/8bpp.c -o obj/8bpp.o $(CXXFLAGS)
+
+obj/16bpp.o: $(GLOBALDEPS) amigaos3/libnsfb/src/plot/16bpp.c amigaos3/libnsfb/src/plot/common.c
+	$(CPP) -c amigaos3/libnsfb/src/plot/16bpp.c -o obj/16bpp.o $(CXXFLAGS)
+
+obj/24bpp.o: $(GLOBALDEPS) amigaos3/libnsfb/src/plot/24bpp.c
+	$(CPP) -c amigaos3/libnsfb/src/plot/24bpp.c -o obj/24bpp.o $(CXXFLAGS)
+
+obj/32bpp-xbgr8888.o: $(GLOBALDEPS) amigaos3/libnsfb/src/plot/32bpp-xbgr8888.c amigaos3/libnsfb/src/plot/32bpp-common.c amigaos3/libnsfb/src/plot/common.c
+	$(CPP) -c amigaos3/libnsfb/src/plot/32bpp-xbgr8888.c -o obj/32bpp-xbgr8888.o $(CXXFLAGS)
+
+obj/32bpp-xrgb8888.o: $(GLOBALDEPS) amigaos3/libnsfb/src/plot/32bpp-xrgb8888.c amigaos3/libnsfb/src/plot/32bpp-common.c amigaos3/libnsfb/src/plot/common.c
+	$(CPP) -c amigaos3/libnsfb/src/plot/32bpp-xrgb8888.c -o obj/32bpp-xrgb8888.o $(CXXFLAGS)
+
+obj/api.o: $(GLOBALDEPS) amigaos3/libnsfb/src/plot/api.c
+	$(CPP) -c amigaos3/libnsfb/src/plot/api.c -o obj/api.o $(CXXFLAGS)
+
+obj/generic.o: $(GLOBALDEPS) amigaos3/libnsfb/src/plot/generic.c
+	$(CPP) -c amigaos3/libnsfb/src/plot/generic.c -o obj/generic.o $(CXXFLAGS)
+
+obj/util.o: $(GLOBALDEPS) amigaos3/libnsfb/src/plot/util.c
+	$(CPP) -c amigaos3/libnsfb/src/plot/util.c -o obj/util.o $(CXXFLAGS)
+
+obj/cursor.o: $(GLOBALDEPS) amigaos3/libnsfb/src/cursor.c
+	$(CPP) -c amigaos3/libnsfb/src/cursor.c -o obj/cursor.o $(CXXFLAGS)
+
+obj/libnsfb.o: $(GLOBALDEPS) amigaos3/libnsfb/src/libnsfb.c
+	$(CPP) -c amigaos3/libnsfb/src/libnsfb.c -o obj/libnsfb.o $(CXXFLAGS)
+
+obj/palette.o: $(GLOBALDEPS) amigaos3/libnsfb/src/palette.c
+	$(CPP) -c amigaos3/libnsfb/src/palette.c -o obj/palette.o $(CXXFLAGS)
+
+obj/able.o: $(GLOBALDEPS) amigaos3/libnsfb/src/surface/able.c
+	$(CPP) -c amigaos3/libnsfb/src/surface/able.c -o obj/able.o $(CXXFLAGS)
+
+obj/ram.o: $(GLOBALDEPS) amigaos3/libnsfb/src/surface/ram.c
+	$(CPP) -c amigaos3/libnsfb/src/surface/ram.c -o obj/ram.o $(CXXFLAGS)
+
+obj/sdl.o: $(GLOBALDEPS) amigaos3/libnsfb/src/surface/sdl.c
+	$(CPP) -c amigaos3/libnsfb/src/surface/sdl.c -o obj/sdl.o $(CXXFLAGS)
+
+obj/surface.o: $(GLOBALDEPS) amigaos3/libnsfb/src/surface/surface.c
+	$(CPP) -c amigaos3/libnsfb/src/surface/surface.c -o obj/surface.o $(CXXFLAGS)
+
+obj/fb_dump.o: $(GLOBALDEPS) amigaos3/libnsfb/src/fb_dump.c
+	$(CPP) -c amigaos3/libnsfb/src/fb_dump.c -o obj/fb_dump.o $(CXXFLAGS)

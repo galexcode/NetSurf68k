@@ -1,14 +1,14 @@
 [Project]
 FileName=Netsurf.dev
 Name=Netsurf
-UnitCount=119
+UnitCount=135
 PchHead=-1
 PchSource=-1
 Ver=3
 IsCpp=1
 ProfilesCount=1
 ProfileIndex=0
-Folders=amigaos3,amigaos3/fbtk,content,content/fetchers,css,desktop,framebuffer,framebuffer/fbtk,image,javascript,render,utils,utils/http
+Folders=amigaos3,amigaos3/fbtk,amigaos3/libnsfb,amigaos3/libnsfb/plot,amigaos3/libnsfb/surface,content,content/fetchers,css,desktop,framebuffer,framebuffer/fbtk,image,javascript,render,utils,utils/http
 
 [VersionInfo]
 Major=3
@@ -38,10 +38,10 @@ Libs=E:\opt\share\lib
 ResourceIncludes=E:\usr\local\amiga\m68k-amigaos\bin;E:\projects\netsurf
 MakeIncludes=
 Compiler=-std=c99 -O3 -m68060 -mnobitfield -s_@@_
-CppCompiler=
-Linker=-Wl,--whole-archive -lnsfb -ldom -Wl,--no-whole-archive_@@_-lhubbub -lcss_@@_-lwapcaplet -lparserutils_@@_-lnsgif -lnsbmp_@@_-lcurl -lssl -lcrypto_@@_-liconv -lexpat_@@_-lSDL_image -lturbojpeg _@@_-lpng15 -lfreetype2  -lz_@@_-lSDL -lgl_dummy -ltheme _@@_-lauto -lc2 -ldebug_@@_
-PreprocDefines=nsamigaos3_@@_NETSURF_USE_JS=NO_@@_NETSURF_USE_BMP=YES_@@_NETSURF_USE_GIF=YES_@@_NETSURF_USE_JPEG=YES_@@_NETSURF_USE_PNG=YES_@@_WITH_PNG_@@_WITH_BMP_@@_WITH_GIF_@@_WITH_JPEG_@@_CROSS_COMPILE_@@_FB_USE_FREETYPE=YES_@@_NETSURF_USE_LIBICONV_PLUG=NO_@@_NETSURF_USE_ROSPRITE=NO_@@_NETSURF_USE_MNG=NO_@@_NETSURF_USE_WEBP=NO_@@_NETSURF_USE_NSSVG=NO_@@_NETSURF_FB_FRONTEND=sdl_@@_NETSURF_FB_RESPATH_sdl=/PROGDIR:Resources/_@@_NETSURF_FB_FONTLIB=freetype_@@_NETSURF_STRIP_BINARY=YES_@@_NETSURF_USE_VIDEO=NO_@@_NETSURF_USE_MOZJS=NO_@@_NETSURF_FB_FONTPATH=/ProgDir:Fonts/_@@_NETSURF_FB_RESPATH=/PROGDIR:Resources/_@@__BSD_SOURCE_@@__XOPEN_SOURCE=600_@@__POSIX_C_SOURCE=200112L_@@_PATH_MAX=1024_@@_
-CompilerSettings=0000000000001000000000
+CppCompiler=-std=c99 -O3 -m68060 -mnobitfield -s_@@_
+Linker=-Wl,--whole-archive -ldom -Wl,--no-whole-archive_@@_-lhubbub -lcss_@@_-lwapcaplet -lparserutils_@@_-lnsgif -lnsbmp_@@_-lcurl -lssl -lcrypto_@@_-liconv -lexpat_@@_-lSDL_image -lturbojpeg _@@_-lpng15 -lfreetype2  -lz_@@_-lSDL -lgl_dummy -ltheme _@@_-lauto -lc2 -ldebug_@@_
+PreprocDefines=nsamigaos3_@@_NETSURF_USE_JS=NO_@@_NETSURF_USE_BMP=YES_@@_NETSURF_USE_GIF=YES_@@_NETSURF_USE_JPEG=YES_@@_NETSURF_USE_PNG=YES_@@_WITH_PNG_@@_WITH_BMP_@@_WITH_GIF_@@_WITH_JPEG_@@_CROSS_COMPILE_@@_FB_USE_FREETYPE=YES_@@_NETSURF_USE_LIBICONV_PLUG=NO_@@_NETSURF_USE_ROSPRITE=NO_@@_NETSURF_USE_MNG=NO_@@_NETSURF_USE_WEBP=NO_@@_NETSURF_USE_NSSVG=NO_@@_NETSURF_FB_FRONTEND=sdl_@@_NETSURF_FB_RESPATH_sdl=/PROGDIR:Resources/_@@_NETSURF_FB_FONTLIB=freetype_@@_NETSURF_STRIP_BINARY=YES_@@_NETSURF_USE_VIDEO=NO_@@_NETSURF_USE_MOZJS=NO_@@_NETSURF_FB_FONTPATH=/ProgDir:Fonts/_@@_NETSURF_FB_RESPATH=/PROGDIR:Resources/_@@___BIG_ENDIAN_BGRA___@@__BSD_SOURCE_@@__XOPEN_SOURCE=600_@@__POSIX_C_SOURCE=200112L_@@_PATH_MAX=1024_@@_
+CompilerSettings=0000000000001000000100
 Icon=
 ExeOutput=..\netsurf
 ObjectOutput=obj
@@ -1156,20 +1156,10 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit120]
-FileName=framebuffer\fbtk\window.c
-CompileCpp=0
-Folder=framebuffer/fbtk
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit121]
-FileName=framebuffer\fbtk\fbtk.c
-CompileCpp=0
-Folder=framebuffer/fbtk
+FileName=amigaos3\libnsfb\src\plot\16bpp.c
+CompileCpp=1
+Folder=amigaos3/libnsfb/plot
 Compile=1
 Link=1
 Priority=1000
@@ -1177,19 +1167,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit122]
-FileName=framebuffer\fbtk\fill.c
-CompileCpp=0
-Folder=framebuffer/fbtk
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit123]
-FileName=framebuffer\fbtk\user.c
-CompileCpp=0
-Folder=framebuffer/fbtk
+FileName=amigaos3\libnsfb\src\plot\24bpp.c
+CompileCpp=1
+Folder=amigaos3/libnsfb/plot
 Compile=1
 Link=1
 Priority=1000
@@ -1197,9 +1177,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit124]
-FileName=framebuffer\fbtk\window.c
-CompileCpp=0
-Folder=framebuffer/fbtk
+FileName=amigaos3\libnsfb\src\plot\32bpp-xrgb8888.c
+CompileCpp=1
+Folder=amigaos3/libnsfb/plot
 Compile=1
 Link=1
 Priority=1000
@@ -1207,9 +1187,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit125]
-FileName=framebuffer\fbtk\window.c
-CompileCpp=0
-Folder=framebuffer/fbtk
+FileName=amigaos3\libnsfb\src\plot\api.c
+CompileCpp=1
+Folder=amigaos3/libnsfb/plot
 Compile=1
 Link=1
 Priority=1000
@@ -1217,9 +1197,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit126]
-FileName=framebuffer\fbtk\window.c
-CompileCpp=0
-Folder=framebuffer/fbtk
+FileName=amigaos3\libnsfb\src\plot\generic.c
+CompileCpp=1
+Folder=amigaos3/libnsfb/plot
 Compile=1
 Link=1
 Priority=1000
@@ -1227,9 +1207,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit127]
-FileName=framebuffer\fbtk\fbtk.c
-CompileCpp=0
-Folder=framebuffer/fbtk
+FileName=amigaos3\libnsfb\src\plot\util.c
+CompileCpp=1
+Folder=amigaos3/libnsfb/plot
 Compile=1
 Link=1
 Priority=1000
@@ -1237,19 +1217,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit128]
-FileName=framebuffer\fbtk\fill.c
-CompileCpp=0
-Folder=framebuffer/fbtk
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit129]
-FileName=framebuffer\fbtk\user.c
-CompileCpp=0
-Folder=framebuffer/fbtk
+FileName=amigaos3\libnsfb\src\cursor.c
+CompileCpp=1
+Folder=amigaos3/libnsfb
 Compile=1
 Link=1
 Priority=1000
@@ -1257,9 +1227,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit130]
-FileName=framebuffer\fbtk\window.c
-CompileCpp=0
-Folder=framebuffer/fbtk
+FileName=amigaos3\libnsfb\src\palette.c
+CompileCpp=1
+Folder=amigaos3/libnsfb
 Compile=1
 Link=1
 Priority=1000
@@ -1267,9 +1237,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit131]
-FileName=framebuffer\fbtk\window.c
-CompileCpp=0
-Folder=framebuffer/fbtk
+FileName=amigaos3\libnsfb\src\surface\able.c
+CompileCpp=1
+Folder=amigaos3/libnsfb/surface
 Compile=1
 Link=1
 Priority=1000
@@ -1277,9 +1247,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit132]
-FileName=framebuffer\fbtk\window.c
-CompileCpp=0
-Folder=framebuffer/fbtk
+FileName=amigaos3\libnsfb\src\surface\ram.c
+CompileCpp=1
+Folder=amigaos3/libnsfb/surface
 Compile=1
 Link=1
 Priority=1000
@@ -1287,9 +1257,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit133]
-FileName=framebuffer\fbtk\window.c
-CompileCpp=0
-Folder=framebuffer/fbtk
+FileName=amigaos3\libnsfb\src\surface\sdl.c
+CompileCpp=1
+Folder=amigaos3/libnsfb/surface
 Compile=1
 Link=1
 Priority=1000
@@ -1297,19 +1267,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit134]
-FileName=framebuffer\fbtk\window.c
-CompileCpp=0
-Folder=framebuffer/fbtk
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit135]
-FileName=framebuffer\fbtk\window.c
-CompileCpp=0
-Folder=framebuffer/fbtk
+FileName=amigaos3\libnsfb\src\surface\surface.c
+CompileCpp=1
+Folder=amigaos3/libnsfb/surface
 Compile=1
 Link=1
 Priority=1000
@@ -1400,6 +1360,66 @@ BuildCmd=
 FileName=javascript\none.c
 CompileCpp=0
 Folder=javascript
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit135]
+FileName=amigaos3\libnsfb\src\fb_dump.c
+CompileCpp=1
+Folder=amigaos3/libnsfb
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit136]
+FileName=amigaos3\libnsfb\src\surface\surface.c
+CompileCpp=1
+Folder=amigaos3/libnsfb/surface
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit137]
+FileName=amigaos3\libnsfb\src\surface\surface.c
+CompileCpp=1
+Folder=amigaos3/libnsfb/surface
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit120]
+FileName=amigaos3\libnsfb\src\plot\8bpp.c
+CompileCpp=1
+Folder=amigaos3/libnsfb/plot
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit123]
+FileName=amigaos3\libnsfb\src\plot\32bpp-xbgr8888.c
+CompileCpp=1
+Folder=amigaos3/libnsfb/plot
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit129]
+FileName=amigaos3\libnsfb\src\libnsfb.c
+CompileCpp=1
+Folder=amigaos3/libnsfb
 Compile=1
 Link=1
 Priority=1000

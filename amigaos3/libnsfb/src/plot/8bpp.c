@@ -20,7 +20,6 @@
 #include "palette.h"
 #include "plot.h"
 
-#define BPP 8
 
 static inline uint8_t *get_xy_loc(nsfb_t *nsfb, int x, int y)
 {

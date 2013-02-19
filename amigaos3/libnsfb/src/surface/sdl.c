@@ -21,7 +21,6 @@
 #include "plot.h"
 #include "cursor.h"
 
-#define nsamigaos3
 #include "desktop/options.h"
 
 enum nsfb_key_code_e sdl_nsfb_map[] = {
