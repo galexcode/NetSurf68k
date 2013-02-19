@@ -40,6 +40,17 @@
 
 #define BOLD_WEIGHT 700
 
+#define NETSURF_FB_FONT_SANS_SERIF "PROGDIR:Fonts/DejaVuSans.ttf"
+#define NETSURF_FB_FONT_SANS_SERIF_BOLD "PROGDIR:Fonts/DejaVuSans-Bold.ttf"
+#define NETSURF_FB_FONT_SANS_SERIF_ITALIC "PROGDIR:Fonts/DejaVuSans-Oblique.ttf"
+#define NETSURF_FB_FONT_SANS_SERIF_ITALIC_BOLD "PROGDIR:Fonts/DejaVuSans-BoldOblique.ttf"
+#define NETSURF_FB_FONT_SERIF "PROGDIR:Fonts/DejaVuSerif.ttf"
+#define NETSURF_FB_FONT_SERIF_BOLD "PROGDIR:Fonts/DejaVuSerif-Bold.ttf"
+#define NETSURF_FB_FONT_MONOSPACE "PROGDIR:Fonts/DejaVuSansMono.ttf"
+#define NETSURF_FB_FONT_MONOSPACE_BOLD "PROGDIR:Fonts/DejaVuSansMono-Bold.ttf"
+#define NETSURF_FB_FONT_CURSIVE "PROGDIR:Fonts/DejaVuSans-Oblique.ttf"
+#define NETSURF_FB_FONT_FANTASY "PROGDIR:Fonts/DejaVuSans.ttf"
+
 static FT_Library library; 
 static FTC_Manager ft_cmanager;
 static FTC_CMapCache ft_cmap_cache ;

@@ -623,8 +623,8 @@ main(int argc, char** argv)
 
 	setbuf(stderr, NULL);
 	
-	respaths = fb_init_resource("PROGDIR:Resources/");
-
+	respaths = fb_init_resource(".Resources/");
+	
 	messages = strdup("PROGDIR:Resources/messages");
 	options = strdup("PROGDIR:Resources/Options");
 
@@ -857,6 +857,7 @@ void rerun_netsurf()
 	char run[1028];
 	
 	GetCurrentDirName(curDir,1024);
+	printf(curDir);
 	strcpy(run, "run ");
 	strcat(run, curDir);
 	strcat(run, "/netsurf");

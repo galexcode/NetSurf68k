@@ -7,7 +7,16 @@
 #
 # Version	Domain	Domain from Set-Cookie	Path	Path from Set-Cookie	Secure	HTTP-Only	Expires	Last used	No destroy	Name	Value	Value was quoted	Scheme	URL	Comment
 Version:	102
+0	.amiga.org	1	/	1	0	0	1392810661	1361277351	0	aolastvisit	1361273313	0	unused	unused	
+0	.amiga.org	1	/	1	0	0	1392810661	1361277351	0	aolastactivity	0	0	unused	unused	
+0	www.ppa.pl	0	/	1	0	0	1361620350	1361277207	0	ppa_forum_t27128	27128x3	0	http	http://www.ppa.pl/	
+0	www.ppa.pl	0	/	1	0	0	1361277851	1361277207	0	ads_frq	4	0	http	http://www.ppa.pl/	
 0	.abime.net	1	/	1	0	0	1392070467	1360537472	0	eablastvisit	1360534467	0	unused	unused	
 0	.abime.net	1	/	1	0	0	1392070488	1360537472	0	eablastactivity	0	0	unused	unused	
 0	.abime.net	1	/	1	0	1	1392070488	1360537472	0	eabuserid	12132	0	unused	unused	
 0	.abime.net	1	/	1	0	1	1392070488	1360537472	0	eabpassword	289c45c7a191ffdb62cf788245798000	0	unused	unused	
+0	sourceforge.net	0	/	1	0	0	2147483647	1361277087	0	sf.consume	2a1c385572cb9e5e1f8a76c12915f1594480faf9gAJ9cQEoVQhfZXhwaXJlc3ECY2RhdGV0aW1lCmRhdGV0aW1lCnEDVQoH9gETAw4HAAAAhVJxBFUDX2lkcQVVIDg3ZThiZWFkOTc3MDRiZDdhYjEwNmNjZDliZDE3Yzk1cQZVDl9hY2Nlc3NlZF90aW1lcQdHQdRI2YX05qxVDl9jcmVhdGlvbl90aW1lcQhHQdRI2YWbRZl1Lg==	0	https	https://sourceforge.net/projects/gigalomania/screenshots/glm_0_25_windows_ss2.jpg/182/137/	
+0	sourceforge.net	0	/	1	0	1	1676637088	0	0	VISITOR	5123661791aa91157b434b4e	0	http	http://sourceforge.net/projects/gigalomania/screenshots/glm_0_25_windows_ss1.jpg/182/137/	
+0	sourceforge.net	0	/	1	0	0	2147483647	0	0	sf.consume	7723d560735d5794f7b6e4962c40edf9162bf284gAJ9cQEoVQxsYW5kaW5nX3BhZ2VxAlVDL3Byb2plY3RzL2dpZ2Fsb21hbmlhL3NjcmVlbnNob3RzL2dsbV8wXzI1X3dpbmRvd3Nfc3MyLmpwZy8xODIvMTM3L3EDVQNfaWRxBFUgYjNmYjIzZjVlYTc1NDQ2ZDljZDk5Yzg0NWZmZjgzNzZxBVUOdXNlc19yZWxhdGlvbnNxBolVCF9leHBpcmVzcQdjZGF0ZXRpbWUKZGF0ZXRpbWUKcQhVCgf2ARMDDgcAAACFUnEJVQd2ZXJzaW9ucQpVATJVA2tleXELVRg1MTIzNjYxNzkxYWE5MTE1N2I0MzRiNGVxDFUFcHJlZnNxDX1xDlUOX2FjY2Vzc2VkX3RpbWVxD0dB1EjZhjNVdVUOX2NyZWF0aW9uX3RpbWVxEEdB1EjZhfN3U3Uu	0	http	http://sourceforge.net/projects/gigalomania/screenshots/glm_0_25_windows_ss1.jpg/182/137/	
+0	.youtube.com	1	/	1	0	0	1382010438	0	0	VISITOR_INFO1_LIVE	pNhl5Z86ROc	0	unused	unused	
+0	.youtube.com	1	/	1	0	0	1676634438	0	0	PREF	f1=50000000	0	unused	unused	

@@ -10,6 +10,7 @@
 #include <stdbool.h>
 #include <endian.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "libnsfb.h"
 #include "libnsfb_plot.h"
@@ -19,8 +20,6 @@
 #include "plot.h"
 
 #define UNUSED __attribute__((unused)) 
-
-#define BPP 16
 
 static inline uint16_t *get_xy_loc(nsfb_t *nsfb, int x, int y)
 {
@@ -40,39 +39,10 @@ static inline uint16_t colour_to_pixel(UNUSED nsfb_t *nsfb, nsfb_colour_t c)
         return ((c & 0xF8) << 8) | ((c & 0xFC00 ) >> 5) | ((c & 0xF80000) >> 19);
 }
 
-static inline nsfb_colour_t nsfb_plot_ablend_be16(nsfb_colour_t pixel,nsfb_colour_t  scrpixel)
-{
-	  int opacity = pixel & 0xFF;
-	  int transp = 0x100 - opacity;
-	  uint32_t rb, g; 
-	  pixel >>= 8;
-	  scrpixel >>= 8;
-	  rb = ((pixel & 0xFF00FF) * opacity +
-          (scrpixel & 0xFF00FF) * transp) >> 8;
-	  g  = ((pixel & 0x00FF00) * opacity +
-          (scrpixel & 0x00FF00) * transp) >> 8;
-
-    return ((rb & 0xFF00FF) | (g & 0xFF00)) << 8; 
-
-}
-
-static inline nsfb_colour_t pixel_be_to_colour(UNUSED nsfb_t *nsfb, uint16_t pixel)
-{
-        return ((pixel & 0x1F) << (8+3)) |
-              ((pixel & 0x7E0) << (8+5)) |
-              ((pixel & 0xF800) << (16));
-}
-
-static inline uint16_t colour_be_to_pixel(UNUSED nsfb_t *nsfb, nsfb_colour_t c)
-{
-	    return ((c & 0xF8000000) >> 16) | ((c & 0xFC0000) >> (16-3)) | ((c & 0xF800) >> 11  );
-}
-
 #define PLOT_TYPE uint16_t
 #define PLOT_LINELEN(ll) ((ll) >> 1)
 
 #include "common.c"
-
 
 static bool fill(nsfb_t *nsfb, nsfb_bbox_t *rect, nsfb_colour_t c)
 {

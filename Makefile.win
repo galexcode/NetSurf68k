@@ -1,0 +1,387 @@
+# Project: Netsurf
+# Compiler: m68-amiga
+# Compiler Type: MingW 3
+# Makefile created by wxDev-C++ 6.10.2 on 19-02-13 12:45
+
+CPP       = m68k-amigaos-g++.exe
+CC        = m68k-amigaos-gcc.exe
+WINDRES   = windres.exe
+OBJ       = obj/ami_clipboard.o obj/findfile.o obj/font_freetype.o obj/gui.o obj/loadbitmap.o obj/misc.o obj/version.o obj/event.o obj/osk.o obj/scroll.o obj/text.o obj/content.o obj/content_factory.o obj/dirlist.o obj/fetch.o obj/hlcache.o obj/llcache.o obj/mimesniff.o obj/urldb.o obj/about.o obj/curl.o obj/data.o obj/file.o obj/resource.o obj/css.o obj/dump.o obj/internal.o obj/select.o obj/css_utils.o obj/browser.o obj/cookies.o obj/download.o obj/frames.o obj/history_core.o obj/history_global_core.o obj/hotlist.o obj/knockout.o obj/mouse.o obj/netsurf.o obj/options.o obj/plot_style.o obj/print.o obj/save_complete.o obj/save_text.o obj/scrollbar.o obj/desktop_search.o obj/searchweb.o obj/selection.o obj/sslcert.o obj/textarea.o obj/textinput.o obj/destktop_thumbnail.o obj/tree.o obj/tree_url_node.o obj/bmp.o obj/gif.o obj/ico.o obj/image.o obj/image_cache.o obj/jpeg.o obj/png.o obj/none.o obj/box.o obj/box_construct.o obj/box_normalise.o obj/font.o obj/form.o obj/html.o obj/html_forms.o obj/html_interaction.o obj/html_redraw.o obj/html_script.o obj/imagemap.o obj/layout.o obj/list.o obj/search.o obj/table.o obj/textplain.o obj/base64.o obj/container.o obj/corestrings.o obj/filename.o obj/filepath.o obj/hashtable.o obj/libdom.o obj/locale.o obj/log.o obj/memdebug.o obj/messages.o obj/nsurl.o obj/talloc.o obj/url.o obj/useragent.o obj/utf8.o obj/utils.o obj/challenge.o obj/content-disposition.o obj/content-type.o obj/generics.o obj/parameter.o obj/primitives.o obj/www-authenticate.o obj/bitmap.o obj/clipboard.o obj/fb_search.o obj/filetype.o obj/framebuffer.o obj/localhistory.o obj/login.o obj/schedule.o obj/system_colour.o obj/thumbnail.o obj/fb_tree.o obj/fbtk_bitmap.o obj/fbtk.o obj/fill.o obj/user.o obj/window.o obj/box_textarea.o
+LINKOBJ   = obj/ami_clipboard.o obj/findfile.o obj/font_freetype.o obj/gui.o obj/loadbitmap.o obj/misc.o obj/version.o obj/event.o obj/osk.o obj/scroll.o obj/text.o obj/content.o obj/content_factory.o obj/dirlist.o obj/fetch.o obj/hlcache.o obj/llcache.o obj/mimesniff.o obj/urldb.o obj/about.o obj/curl.o obj/data.o obj/file.o obj/resource.o obj/css.o obj/dump.o obj/internal.o obj/select.o obj/css_utils.o obj/browser.o obj/cookies.o obj/download.o obj/frames.o obj/history_core.o obj/history_global_core.o obj/hotlist.o obj/knockout.o obj/mouse.o obj/netsurf.o obj/options.o obj/plot_style.o obj/print.o obj/save_complete.o obj/save_text.o obj/scrollbar.o obj/desktop_search.o obj/searchweb.o obj/selection.o obj/sslcert.o obj/textarea.o obj/textinput.o obj/destktop_thumbnail.o obj/tree.o obj/tree_url_node.o obj/bmp.o obj/gif.o obj/ico.o obj/image.o obj/image_cache.o obj/jpeg.o obj/png.o obj/none.o obj/box.o obj/box_construct.o obj/box_normalise.o obj/font.o obj/form.o obj/html.o obj/html_forms.o obj/html_interaction.o obj/html_redraw.o obj/html_script.o obj/imagemap.o obj/layout.o obj/list.o obj/search.o obj/table.o obj/textplain.o obj/base64.o obj/container.o obj/corestrings.o obj/filename.o obj/filepath.o obj/hashtable.o obj/libdom.o obj/locale.o obj/log.o obj/memdebug.o obj/messages.o obj/nsurl.o obj/talloc.o obj/url.o obj/useragent.o obj/utf8.o obj/utils.o obj/challenge.o obj/content-disposition.o obj/content-type.o obj/generics.o obj/parameter.o obj/primitives.o obj/www-authenticate.o obj/bitmap.o obj/clipboard.o obj/fb_search.o obj/filetype.o obj/framebuffer.o obj/localhistory.o obj/login.o obj/schedule.o obj/system_colour.o obj/thumbnail.o obj/fb_tree.o obj/fbtk_bitmap.o obj/fbtk.o obj/fill.o obj/user.o obj/window.o obj/box_textarea.o
+LIBS      = -L"E:/opt/share/lib" -L"E:/usr/local/amiga/m68k-amigaos/lib" -L"E:/opt/share/lib" -Wl,--whole-archive -lnsfb -ldom -Wl,--no-whole-archive -lhubbub -lcss -lwapcaplet -lparserutils -lnsgif -lnsbmp -lcurl -lssl -lcrypto -liconv -lexpat -lSDL_image -lturbojpeg  -lpng15 -lfreetype2  -lz -lSDL -lgl_dummy -ltheme  -lauto -lc2 -ldebug  
+INCS      = -I"E:/usr/local/amiga/m68k-amigaos/sys-include" -I"E:/usr/local/amiga/m68k-amigaos/include" -I"E:/opt/share/include" -I"E:/projects/netsurf" -I"E:/usr/local/amiga/m68k-amigaos/sys-include" -I"E:/usr/local/amiga/m68k-amigaos/include"
+CXXINCS   = -I"E:/" -I"E:/opt/share/include" -I"E:/projects/netsurf" -I"E:/usr/local/amiga/m68k-amigaos/sys-include" -I"E:/usr/local/amiga/m68k-amigaos/include"
+RCINCS    = --include-dir "E:/opt/share/include" -I"E:/usr/local/amiga/m68k-amigaos/bin" -I"E:/projects/netsurf"
+BIN       = Netsurf.exe
+DEFINES   =  -Dnsamigaos3 -DNETSURF_USE_JS=NO -DNETSURF_USE_BMP=YES -DNETSURF_USE_GIF=YES -DNETSURF_USE_JPEG=YES -DNETSURF_USE_PNG=YES -DWITH_PNG -DWITH_BMP -DWITH_GIF -DWITH_JPEG -DCROSS_COMPILE -DFB_USE_FREETYPE=YES -DNETSURF_USE_LIBICONV_PLUG=NO -DNETSURF_USE_ROSPRITE=NO -DNETSURF_USE_MNG=NO -DNETSURF_USE_WEBP=NO -DNETSURF_USE_NSSVG=NO -DNETSURF_FB_FRONTEND=sdl -DNETSURF_FB_RESPATH_sdl=/PROGDIR:Resources/ -DNETSURF_FB_FONTLIB=freetype -DNETSURF_STRIP_BINARY=YES -DNETSURF_USE_VIDEO=NO -DNETSURF_USE_MOZJS=NO -DNETSURF_FB_FONTPATH=/ProgDir:Fonts/ -DNETSURF_FB_RESPATH=/PROGDIR:Resources/ -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=200112L -DPATH_MAX=1024
+CXXFLAGS  = $(CXXINCS) $(DEFINES)   -O3
+CFLAGS    = $(INCS) $(DEFINES) -std=c99 -O3 -m68060 -mnobitfield -s   -O3
+GPROF     = gprof.exe
+RM        = rm -f
+LINK      = m68k-amigaos-g++.exe
+
+.PHONY: all all-before all-after clean clean-custom
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	$(RM) $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(LINK) $(LINKOBJ) -o "Netsurf.exe" $(LIBS)
+
+obj/ami_clipboard.o: $(GLOBALDEPS) amigaos3/ami_clipboard.c amigaos3/clipboard.h
+	$(CC) -c amigaos3/ami_clipboard.c -o obj/ami_clipboard.o $(CFLAGS)
+
+obj/findfile.o: $(GLOBALDEPS) amigaos3/findfile.c
+	$(CC) -c amigaos3/findfile.c -o obj/findfile.o $(CFLAGS)
+
+obj/font_freetype.o: $(GLOBALDEPS) amigaos3/font_freetype.c
+	$(CC) -c amigaos3/font_freetype.c -o obj/font_freetype.o $(CFLAGS)
+
+obj/gui.o: $(GLOBALDEPS) amigaos3/gui.c
+	$(CC) -c amigaos3/gui.c -o obj/gui.o $(CFLAGS)
+
+obj/loadbitmap.o: $(GLOBALDEPS) amigaos3/loadbitmap.c
+	$(CC) -c amigaos3/loadbitmap.c -o obj/loadbitmap.o $(CFLAGS)
+
+obj/misc.o: $(GLOBALDEPS) amigaos3/misc.c
+	$(CC) -c amigaos3/misc.c -o obj/misc.o $(CFLAGS)
+
+obj/version.o: $(GLOBALDEPS) amigaos3/version.c
+	$(CC) -c amigaos3/version.c -o obj/version.o $(CFLAGS)
+
+obj/event.o: $(GLOBALDEPS) amigaos3/fbtk/event.c amigaos3/fbtk/widget.h
+	$(CC) -c amigaos3/fbtk/event.c -o obj/event.o $(CFLAGS)
+
+obj/osk.o: $(GLOBALDEPS) amigaos3/fbtk/osk.c amigaos3/fbtk/widget.h
+	$(CC) -c amigaos3/fbtk/osk.c -o obj/osk.o $(CFLAGS)
+
+obj/scroll.o: $(GLOBALDEPS) amigaos3/fbtk/scroll.c amigaos3/fbtk/widget.h
+	$(CC) -c amigaos3/fbtk/scroll.c -o obj/scroll.o $(CFLAGS)
+
+obj/text.o: $(GLOBALDEPS) amigaos3/fbtk/text.c amigaos3/fbtk/widget.h
+	$(CC) -c amigaos3/fbtk/text.c -o obj/text.o $(CFLAGS)
+
+obj/content.o: $(GLOBALDEPS) content/content.c
+	$(CC) -c content/content.c -o obj/content.o $(CFLAGS)
+
+obj/content_factory.o: $(GLOBALDEPS) content/content_factory.c
+	$(CC) -c content/content_factory.c -o obj/content_factory.o $(CFLAGS)
+
+obj/dirlist.o: $(GLOBALDEPS) content/dirlist.c
+	$(CC) -c content/dirlist.c -o obj/dirlist.o $(CFLAGS)
+
+obj/fetch.o: $(GLOBALDEPS) content/fetch.c
+	$(CC) -c content/fetch.c -o obj/fetch.o $(CFLAGS)
+
+obj/hlcache.o: $(GLOBALDEPS) content/hlcache.c
+	$(CC) -c content/hlcache.c -o obj/hlcache.o $(CFLAGS)
+
+obj/llcache.o: $(GLOBALDEPS) content/llcache.c
+	$(CC) -c content/llcache.c -o obj/llcache.o $(CFLAGS)
+
+obj/mimesniff.o: $(GLOBALDEPS) content/mimesniff.c
+	$(CC) -c content/mimesniff.c -o obj/mimesniff.o $(CFLAGS)
+
+obj/urldb.o: $(GLOBALDEPS) content/urldb.c
+	$(CC) -c content/urldb.c -o obj/urldb.o $(CFLAGS)
+
+obj/about.o: $(GLOBALDEPS) content/fetchers/about.c
+	$(CC) -c content/fetchers/about.c -o obj/about.o $(CFLAGS)
+
+obj/curl.o: $(GLOBALDEPS) content/fetchers/curl.c
+	$(CC) -c content/fetchers/curl.c -o obj/curl.o $(CFLAGS)
+
+obj/data.o: $(GLOBALDEPS) content/fetchers/data.c
+	$(CC) -c content/fetchers/data.c -o obj/data.o $(CFLAGS)
+
+obj/file.o: $(GLOBALDEPS) content/fetchers/file.c
+	$(CC) -c content/fetchers/file.c -o obj/file.o $(CFLAGS)
+
+obj/resource.o: $(GLOBALDEPS) content/fetchers/resource.c
+	$(CC) -c content/fetchers/resource.c -o obj/resource.o $(CFLAGS)
+
+obj/css.o: $(GLOBALDEPS) css/css.c
+	$(CC) -c css/css.c -o obj/css.o $(CFLAGS)
+
+obj/dump.o: $(GLOBALDEPS) css/dump.c
+	$(CC) -c css/dump.c -o obj/dump.o $(CFLAGS)
+
+obj/internal.o: $(GLOBALDEPS) css/internal.c
+	$(CC) -c css/internal.c -o obj/internal.o $(CFLAGS)
+
+obj/select.o: $(GLOBALDEPS) css/select.c
+	$(CC) -c css/select.c -o obj/select.o $(CFLAGS)
+
+obj/css_utils.o: $(GLOBALDEPS) css/css_utils.c
+	$(CC) -c css/css_utils.c -o obj/css_utils.o $(CFLAGS)
+
+obj/browser.o: $(GLOBALDEPS) desktop/browser.c
+	$(CC) -c desktop/browser.c -o obj/browser.o $(CFLAGS)
+
+obj/cookies.o: $(GLOBALDEPS) desktop/cookies.c
+	$(CC) -c desktop/cookies.c -o obj/cookies.o $(CFLAGS)
+
+obj/download.o: $(GLOBALDEPS) desktop/download.c
+	$(CC) -c desktop/download.c -o obj/download.o $(CFLAGS)
+
+obj/frames.o: $(GLOBALDEPS) desktop/frames.c
+	$(CC) -c desktop/frames.c -o obj/frames.o $(CFLAGS)
+
+obj/history_core.o: $(GLOBALDEPS) desktop/history_core.c
+	$(CC) -c desktop/history_core.c -o obj/history_core.o $(CFLAGS)
+
+obj/history_global_core.o: $(GLOBALDEPS) desktop/history_global_core.c
+	$(CC) -c desktop/history_global_core.c -o obj/history_global_core.o $(CFLAGS)
+
+obj/hotlist.o: $(GLOBALDEPS) desktop/hotlist.c
+	$(CC) -c desktop/hotlist.c -o obj/hotlist.o $(CFLAGS)
+
+obj/knockout.o: $(GLOBALDEPS) desktop/knockout.c
+	$(CC) -c desktop/knockout.c -o obj/knockout.o $(CFLAGS)
+
+obj/mouse.o: $(GLOBALDEPS) desktop/mouse.c
+	$(CC) -c desktop/mouse.c -o obj/mouse.o $(CFLAGS)
+
+obj/netsurf.o: $(GLOBALDEPS) desktop/netsurf.c
+	$(CC) -c desktop/netsurf.c -o obj/netsurf.o $(CFLAGS)
+
+obj/options.o: $(GLOBALDEPS) desktop/options.c
+	$(CC) -c desktop/options.c -o obj/options.o $(CFLAGS)
+
+obj/plot_style.o: $(GLOBALDEPS) desktop/plot_style.c
+	$(CC) -c desktop/plot_style.c -o obj/plot_style.o $(CFLAGS)
+
+obj/print.o: $(GLOBALDEPS) desktop/print.c
+	$(CC) -c desktop/print.c -o obj/print.o $(CFLAGS)
+
+obj/save_complete.o: $(GLOBALDEPS) desktop/save_complete.c
+	$(CC) -c desktop/save_complete.c -o obj/save_complete.o $(CFLAGS)
+
+obj/save_text.o: $(GLOBALDEPS) desktop/save_text.c
+	$(CC) -c desktop/save_text.c -o obj/save_text.o $(CFLAGS)
+
+obj/scrollbar.o: $(GLOBALDEPS) desktop/scrollbar.c
+	$(CC) -c desktop/scrollbar.c -o obj/scrollbar.o $(CFLAGS)
+
+obj/desktop_search.o: $(GLOBALDEPS) desktop/desktop_search.c
+	$(CC) -c desktop/desktop_search.c -o obj/desktop_search.o $(CFLAGS)
+
+obj/searchweb.o: $(GLOBALDEPS) desktop/searchweb.c
+	$(CC) -c desktop/searchweb.c -o obj/searchweb.o $(CFLAGS)
+
+obj/selection.o: $(GLOBALDEPS) desktop/selection.c
+	$(CC) -c desktop/selection.c -o obj/selection.o $(CFLAGS)
+
+obj/sslcert.o: $(GLOBALDEPS) desktop/sslcert.c
+	$(CC) -c desktop/sslcert.c -o obj/sslcert.o $(CFLAGS)
+
+obj/textarea.o: $(GLOBALDEPS) desktop/textarea.c
+	$(CC) -c desktop/textarea.c -o obj/textarea.o $(CFLAGS)
+
+obj/textinput.o: $(GLOBALDEPS) desktop/textinput.c
+	$(CC) -c desktop/textinput.c -o obj/textinput.o $(CFLAGS)
+
+obj/destktop_thumbnail.o: $(GLOBALDEPS) desktop/destktop_thumbnail.c
+	$(CC) -c desktop/destktop_thumbnail.c -o obj/destktop_thumbnail.o $(CFLAGS)
+
+obj/tree.o: $(GLOBALDEPS) desktop/tree.c
+	$(CC) -c desktop/tree.c -o obj/tree.o $(CFLAGS)
+
+obj/tree_url_node.o: $(GLOBALDEPS) desktop/tree_url_node.c
+	$(CC) -c desktop/tree_url_node.c -o obj/tree_url_node.o $(CFLAGS)
+
+obj/bmp.o: $(GLOBALDEPS) image/bmp.c
+	$(CC) -c image/bmp.c -o obj/bmp.o $(CFLAGS)
+
+obj/gif.o: $(GLOBALDEPS) image/gif.c
+	$(CC) -c image/gif.c -o obj/gif.o $(CFLAGS)
+
+obj/ico.o: $(GLOBALDEPS) image/ico.c
+	$(CC) -c image/ico.c -o obj/ico.o $(CFLAGS)
+
+obj/image.o: $(GLOBALDEPS) image/image.c
+	$(CC) -c image/image.c -o obj/image.o $(CFLAGS)
+
+obj/image_cache.o: $(GLOBALDEPS) image/image_cache.c
+	$(CC) -c image/image_cache.c -o obj/image_cache.o $(CFLAGS)
+
+obj/jpeg.o: $(GLOBALDEPS) image/jpeg.c
+	$(CC) -c image/jpeg.c -o obj/jpeg.o $(CFLAGS)
+
+obj/png.o: $(GLOBALDEPS) image/png.c image/png.h
+	$(CC) -c image/png.c -o obj/png.o $(CFLAGS)
+
+obj/none.o: $(GLOBALDEPS) javascript/none.c
+	$(CC) -c javascript/none.c -o obj/none.o $(CFLAGS)
+
+obj/box.o: $(GLOBALDEPS) render/box.c
+	$(CC) -c render/box.c -o obj/box.o $(CFLAGS)
+
+obj/box_construct.o: $(GLOBALDEPS) render/box_construct.c
+	$(CC) -c render/box_construct.c -o obj/box_construct.o $(CFLAGS)
+
+obj/box_normalise.o: $(GLOBALDEPS) render/box_normalise.c
+	$(CC) -c render/box_normalise.c -o obj/box_normalise.o $(CFLAGS)
+
+obj/font.o: $(GLOBALDEPS) render/font.c
+	$(CC) -c render/font.c -o obj/font.o $(CFLAGS)
+
+obj/form.o: $(GLOBALDEPS) render/form.c
+	$(CC) -c render/form.c -o obj/form.o $(CFLAGS)
+
+obj/html.o: $(GLOBALDEPS) render/html.c
+	$(CC) -c render/html.c -o obj/html.o $(CFLAGS)
+
+obj/html_forms.o: $(GLOBALDEPS) render/html_forms.c
+	$(CC) -c render/html_forms.c -o obj/html_forms.o $(CFLAGS)
+
+obj/html_interaction.o: $(GLOBALDEPS) render/html_interaction.c
+	$(CC) -c render/html_interaction.c -o obj/html_interaction.o $(CFLAGS)
+
+obj/html_redraw.o: $(GLOBALDEPS) render/html_redraw.c
+	$(CC) -c render/html_redraw.c -o obj/html_redraw.o $(CFLAGS)
+
+obj/html_script.o: $(GLOBALDEPS) render/html_script.c
+	$(CC) -c render/html_script.c -o obj/html_script.o $(CFLAGS)
+
+obj/imagemap.o: $(GLOBALDEPS) render/imagemap.c
+	$(CC) -c render/imagemap.c -o obj/imagemap.o $(CFLAGS)
+
+obj/layout.o: $(GLOBALDEPS) render/layout.c
+	$(CC) -c render/layout.c -o obj/layout.o $(CFLAGS)
+
+obj/list.o: $(GLOBALDEPS) render/list.c
+	$(CC) -c render/list.c -o obj/list.o $(CFLAGS)
+
+obj/search.o: $(GLOBALDEPS) render/search.c
+	$(CC) -c render/search.c -o obj/search.o $(CFLAGS)
+
+obj/table.o: $(GLOBALDEPS) render/table.c
+	$(CC) -c render/table.c -o obj/table.o $(CFLAGS)
+
+obj/textplain.o: $(GLOBALDEPS) render/textplain.c
+	$(CC) -c render/textplain.c -o obj/textplain.o $(CFLAGS)
+
+obj/base64.o: $(GLOBALDEPS) utils/base64.c
+	$(CC) -c utils/base64.c -o obj/base64.o $(CFLAGS)
+
+obj/container.o: $(GLOBALDEPS) utils/container.c
+	$(CC) -c utils/container.c -o obj/container.o $(CFLAGS)
+
+obj/corestrings.o: $(GLOBALDEPS) utils/corestrings.c
+	$(CC) -c utils/corestrings.c -o obj/corestrings.o $(CFLAGS)
+
+obj/filename.o: $(GLOBALDEPS) utils/filename.c
+	$(CC) -c utils/filename.c -o obj/filename.o $(CFLAGS)
+
+obj/filepath.o: $(GLOBALDEPS) utils/filepath.c
+	$(CC) -c utils/filepath.c -o obj/filepath.o $(CFLAGS)
+
+obj/hashtable.o: $(GLOBALDEPS) utils/hashtable.c
+	$(CC) -c utils/hashtable.c -o obj/hashtable.o $(CFLAGS)
+
+obj/libdom.o: $(GLOBALDEPS) utils/libdom.c
+	$(CC) -c utils/libdom.c -o obj/libdom.o $(CFLAGS)
+
+obj/locale.o: $(GLOBALDEPS) utils/locale.c utils/locale.h
+	$(CC) -c utils/locale.c -o obj/locale.o $(CFLAGS)
+
+obj/log.o: $(GLOBALDEPS) utils/log.c
+	$(CC) -c utils/log.c -o obj/log.o $(CFLAGS)
+
+obj/memdebug.o: $(GLOBALDEPS) utils/memdebug.c utils/memdebug.h
+	$(CC) -c utils/memdebug.c -o obj/memdebug.o $(CFLAGS)
+
+obj/messages.o: $(GLOBALDEPS) utils/messages.c
+	$(CC) -c utils/messages.c -o obj/messages.o $(CFLAGS)
+
+obj/nsurl.o: $(GLOBALDEPS) utils/nsurl.c
+	$(CC) -c utils/nsurl.c -o obj/nsurl.o $(CFLAGS)
+
+obj/talloc.o: $(GLOBALDEPS) utils/talloc.c utils/talloc.h
+	$(CC) -c utils/talloc.c -o obj/talloc.o $(CFLAGS)
+
+obj/url.o: $(GLOBALDEPS) utils/url.c
+	$(CC) -c utils/url.c -o obj/url.o $(CFLAGS)
+
+obj/useragent.o: $(GLOBALDEPS) utils/useragent.c
+	$(CC) -c utils/useragent.c -o obj/useragent.o $(CFLAGS)
+
+obj/utf8.o: $(GLOBALDEPS) utils/utf8.c
+	$(CC) -c utils/utf8.c -o obj/utf8.o $(CFLAGS)
+
+obj/utils.o: $(GLOBALDEPS) utils/utils.c
+	$(CC) -c utils/utils.c -o obj/utils.o $(CFLAGS)
+
+obj/challenge.o: $(GLOBALDEPS) utils/http/challenge.c
+	$(CC) -c utils/http/challenge.c -o obj/challenge.o $(CFLAGS)
+
+obj/content-disposition.o: $(GLOBALDEPS) utils/http/content-disposition.c
+	$(CC) -c utils/http/content-disposition.c -o obj/content-disposition.o $(CFLAGS)
+
+obj/content-type.o: $(GLOBALDEPS) utils/http/content-type.c
+	$(CC) -c utils/http/content-type.c -o obj/content-type.o $(CFLAGS)
+
+obj/generics.o: $(GLOBALDEPS) utils/http/generics.c
+	$(CC) -c utils/http/generics.c -o obj/generics.o $(CFLAGS)
+
+obj/parameter.o: $(GLOBALDEPS) utils/http/parameter.c
+	$(CC) -c utils/http/parameter.c -o obj/parameter.o $(CFLAGS)
+
+obj/primitives.o: $(GLOBALDEPS) utils/http/primitives.c
+	$(CC) -c utils/http/primitives.c -o obj/primitives.o $(CFLAGS)
+
+obj/www-authenticate.o: $(GLOBALDEPS) utils/http/www-authenticate.c
+	$(CC) -c utils/http/www-authenticate.c -o obj/www-authenticate.o $(CFLAGS)
+
+obj/bitmap.o: $(GLOBALDEPS) framebuffer/bitmap.c
+	$(CC) -c framebuffer/bitmap.c -o obj/bitmap.o $(CFLAGS)
+
+obj/clipboard.o: $(GLOBALDEPS) framebuffer/clipboard.c
+	$(CC) -c framebuffer/clipboard.c -o obj/clipboard.o $(CFLAGS)
+
+obj/fb_search.o: $(GLOBALDEPS) framebuffer/fb_search.c
+	$(CC) -c framebuffer/fb_search.c -o obj/fb_search.o $(CFLAGS)
+
+obj/filetype.o: $(GLOBALDEPS) framebuffer/filetype.c
+	$(CC) -c framebuffer/filetype.c -o obj/filetype.o $(CFLAGS)
+
+obj/framebuffer.o: $(GLOBALDEPS) framebuffer/framebuffer.c
+	$(CC) -c framebuffer/framebuffer.c -o obj/framebuffer.o $(CFLAGS)
+
+obj/localhistory.o: $(GLOBALDEPS) framebuffer/localhistory.c
+	$(CC) -c framebuffer/localhistory.c -o obj/localhistory.o $(CFLAGS)
+
+obj/login.o: $(GLOBALDEPS) framebuffer/login.c
+	$(CC) -c framebuffer/login.c -o obj/login.o $(CFLAGS)
+
+obj/schedule.o: $(GLOBALDEPS) framebuffer/schedule.c
+	$(CC) -c framebuffer/schedule.c -o obj/schedule.o $(CFLAGS)
+
+obj/system_colour.o: $(GLOBALDEPS) framebuffer/system_colour.c
+	$(CC) -c framebuffer/system_colour.c -o obj/system_colour.o $(CFLAGS)
+
+obj/thumbnail.o: $(GLOBALDEPS) framebuffer/thumbnail.c
+	$(CC) -c framebuffer/thumbnail.c -o obj/thumbnail.o $(CFLAGS)
+
+obj/fb_tree.o: $(GLOBALDEPS) framebuffer/fb_tree.c
+	$(CC) -c framebuffer/fb_tree.c -o obj/fb_tree.o $(CFLAGS)
+
+obj/fbtk_bitmap.o: $(GLOBALDEPS) framebuffer/fbtk/fbtk_bitmap.c framebuffer/fbtk/widget.h
+	$(CC) -c framebuffer/fbtk/fbtk_bitmap.c -o obj/fbtk_bitmap.o $(CFLAGS)
+
+obj/fbtk.o: $(GLOBALDEPS) framebuffer/fbtk/fbtk.c framebuffer/fbtk/widget.h
+	$(CC) -c framebuffer/fbtk/fbtk.c -o obj/fbtk.o $(CFLAGS)
+
+obj/fill.o: $(GLOBALDEPS) framebuffer/fbtk/fill.c framebuffer/fbtk/widget.h
+	$(CC) -c framebuffer/fbtk/fill.c -o obj/fill.o $(CFLAGS)
+
+obj/user.o: $(GLOBALDEPS) framebuffer/fbtk/user.c framebuffer/fbtk/widget.h
+	$(CC) -c framebuffer/fbtk/user.c -o obj/user.o $(CFLAGS)
+
+obj/window.o: $(GLOBALDEPS) framebuffer/fbtk/window.c framebuffer/fbtk/widget.h
+	$(CC) -c framebuffer/fbtk/window.c -o obj/window.o $(CFLAGS)
+
+obj/box_textarea.o: $(GLOBALDEPS) render/box_textarea.c
+	$(CPP) -c render/box_textarea.c -o obj/box_textarea.o $(CXXFLAGS)

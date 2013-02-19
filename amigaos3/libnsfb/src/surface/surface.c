@@ -48,7 +48,7 @@ static int surface_defaults(nsfb_t *nsfb)
 {
     nsfb->width = 800;
     nsfb->height = 600;
-    nsfb->format = NSFB_FMT_XRGB8888;
+    nsfb->format = NSFB_FMT_RGB565; // Arcz
 
     /* select default sw plotters for bpp */
     select_plotters(nsfb);

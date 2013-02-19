@@ -18,7 +18,6 @@
 #include "nsfb.h"
 #include "plot.h"
 
-#define BPP 32
 
 #define UNUSED __attribute__((unused)) 
 
@@ -38,40 +37,6 @@ static inline uint32_t colour_to_pixel(UNUSED nsfb_t *nsfb, nsfb_colour_t c)
 {
         return (c << 8);
 }
-#ifdef __BIG_ENDIAN_BGRA__
-// this funcs are need because bitmaps have diffrent format (rgba)when get from netsurf.
-//if your SDL surface work in rgba mode(seem in SDL_SWSURFACE done), you need diffrent funcs.
-static inline nsfb_colour_t nsfb_plot_ablend_rgba(nsfb_colour_t pixel,nsfb_colour_t  scrpixel)
-{
-	  int opacity = pixel & 0xFF;
-	  int transp = 0x100 - opacity;
-          uint32_t rb, g; 
-	  pixel >>= 8;
-	  scrpixel >>= 8;
-	  rb = ((pixel & 0xFF00FF) * opacity +
-          (scrpixel & 0xFF00FF) * transp) >> 8;
-          g  = ((pixel & 0x00FF00) * opacity +
-          (scrpixel & 0x00FF00) * transp) >> 8;
-
-    return ((rb & 0xFF00FF) | (g & 0xFF00)) << 8; 
-}
-
-static inline uint32_t colour_rgba_to_pixel_bgra(UNUSED nsfb_t *nsfb, nsfb_colour_t c)
-{
-	   
-		return (((c & 0xFF00) << 16 ) |
-                ((c & 0xFF0000) ) |
-                ((c & 0xFF000000) >> 16) );
-}
-static inline nsfb_colour_t pixel_bgra_to_colour_rgba(UNUSED nsfb_t *nsfb, uint32_t pixel)
-{
-
-	return (((pixel & 0xFF000000) >> 16  ) |
-                ((pixel & 0xFF0000) >> 0) |
-                ((pixel & 0xFF00) << 16));
-} 
-
-#endif /*__BIG_ENDIAN_BGRA__*/
 #else /* __BYTE_ORDER == __BIG_ENDIAN */
 static inline nsfb_colour_t pixel_to_colour(UNUSED nsfb_t *nsfb, uint32_t pixel)
 {

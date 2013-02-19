@@ -16,9 +16,74 @@
 #error PLOT_LINELEN must be a macro to increment a line length
 #endif
 
+#include <stdio.h>
 #include "palette.h"
 
 #define SIGN(x)  ((x<0) ?  -1  :  ((x>0) ? 1 : 0))
+#define UNUSED __attribute__((unused)) 
+
+static inline nsfb_colour_t nsfb_plot_ablend_be16(nsfb_colour_t pixel,nsfb_colour_t  scrpixel)
+{
+	  int opacity = pixel & 0xFF;
+	  int transp = 0x100 - opacity;
+	  uint32_t rb, g; 
+	  pixel >>= 8;
+	  scrpixel >>= 8;
+	  rb = ((pixel & 0xFF00FF) * opacity +
+          (scrpixel & 0xFF00FF) * transp) >> 8;
+	  g  = ((pixel & 0x00FF00) * opacity +
+          (scrpixel & 0x00FF00) * transp) >> 8;
+
+    return ((rb & 0xFF00FF) | (g & 0xFF00)) << 8; 
+
+}
+
+static inline nsfb_colour_t pixel_be_to_colour(UNUSED nsfb_t *nsfb, uint16_t pixel)
+{
+        return ((pixel & 0x1F) << (8+3)) |
+              ((pixel & 0x7E0) << (8+5)) |
+              ((pixel & 0xF800) << (16));
+}
+
+static inline uint16_t colour_be_to_pixel(UNUSED nsfb_t *nsfb, nsfb_colour_t c)
+{
+	    return ((c & 0xF8000000) >> 16) | ((c & 0xFC0000) >> (16-3)) | ((c & 0xF800) >> 11  );
+}
+
+#ifdef __BIG_ENDIAN_BGRA__
+// this funcs are need because bitmaps have diffrent format (rgba)when get from netsurf.
+//if your SDL surface work in rgba mode(seem in SDL_SWSURFACE done), you need diffrent funcs.
+static inline nsfb_colour_t nsfb_plot_ablend_rgba(nsfb_colour_t pixel,nsfb_colour_t  scrpixel)
+{
+	  int opacity = pixel & 0xFF;
+	  int transp = 0x100 - opacity;
+          uint32_t rb, g; 
+	  pixel >>= 8;
+	  scrpixel >>= 8;
+	  rb = ((pixel & 0xFF00FF) * opacity +
+          (scrpixel & 0xFF00FF) * transp) >> 8;
+          g  = ((pixel & 0x00FF00) * opacity +
+          (scrpixel & 0x00FF00) * transp) >> 8;
+
+    return ((rb & 0xFF00FF) | (g & 0xFF00)) << 8; 
+}
+
+static inline uint32_t colour_rgba_to_pixel_bgra(UNUSED nsfb_t *nsfb, nsfb_colour_t c)
+{
+	   
+		return (((c & 0xFF00) << 16 ) |
+                ((c & 0xFF0000) ) |
+                ((c & 0xFF000000) >> 16) );
+}
+static inline nsfb_colour_t pixel_bgra_to_colour_rgba(UNUSED nsfb_t *nsfb, uint32_t pixel)
+{
+
+	return (((pixel & 0xFF000000) >> 16  ) |
+                ((pixel & 0xFF0000) >> 0) |
+                ((pixel & 0xFF00) << 16));
+} 
+
+#endif /*__BIG_ENDIAN_BGRA__*/
 
 static bool
 line(nsfb_t *nsfb, int linec, nsfb_bbox_t *line, nsfb_plot_pen_t *pen)
@@ -313,7 +378,7 @@ static bool bitmap_scaled(nsfb_t *nsfb, const nsfb_bbox_t *loc,
 				/* get value of source pixel in question */
 				abpixel = pixel[yoff + xoff];
 #ifdef __BIG_ENDIAN_BGRA__					
-#if BPP == 16
+if (Bpp == 16) {
 						if ((abpixel & 0x000000FF) != 0) {
 						/* pixel is not transparent; have to
 						 * plot something */								
@@ -333,8 +398,10 @@ static bool bitmap_scaled(nsfb_t *nsfb, const nsfb_bbox_t *loc,
 								*(pvideo + xloop) = colour_be_to_pixel(
 										nsfb, abpixel);			
 
-							}								
-#elif BPP == 32
+							}	
+		}					
+else if (Bpp == 32) 
+		{
 						if ((abpixel & 0x000000FF) != 0) {
 							/* pixel is not transparent; have to
 							 * plot something */
@@ -352,9 +419,9 @@ static bool bitmap_scaled(nsfb_t *nsfb, const nsfb_bbox_t *loc,
 							/* plot pixel */						
 							*(pvideo + xloop) = colour_rgba_to_pixel_bgra(
 									nsfb, abpixel);
-							}		
-#endif	/*BPP */
-#else
+							}	
+		}							
+else /*Bpp */ {
 						if ((abpixel & 0xFF000000) != 0) {
 							/* pixel is not transparent; have to
 							 * plot something */
@@ -372,6 +439,7 @@ static bool bitmap_scaled(nsfb_t *nsfb, const nsfb_bbox_t *loc,
 							/* plot pixel */
 							*(pvideo + xloop) = colour_to_pixel(nsfb, abpixel);
 						}
+	}					
 #endif /*__BIG_ENDIAN_BGRA__ */
 				/* handle horizontal interpolation */
 				xoff += dx;
@@ -401,11 +469,10 @@ static bool bitmap_scaled(nsfb_t *nsfb, const nsfb_bbox_t *loc,
 				abpixel = pixel[yoff + xoff];
 				/* plot pixel */
 #ifdef __BIG_ENDIAN_BGRA__	
-	#if BPP == 16
+	if (Bpp == 16)
 				*(pvideo + xloop) = colour_be_to_pixel(nsfb, abpixel);
-	#elif BPP == 32						
-                *(pvideo + xloop) = colour_rgba_to_pixel_bgra(nsfb, abpixel);
-	#endif			
+	else if (Bpp == 32)						
+                *(pvideo + xloop) = colour_rgba_to_pixel_bgra(nsfb, abpixel);			
 #else
 				*(pvideo + xloop) = colour_to_pixel(nsfb, abpixel);
 #endif
@@ -494,7 +561,7 @@ bitmap(nsfb_t *nsfb,
                         for (xloop = 0; xloop < width; xloop++) {
                                 abpixel = pixel[yloop + xloop + xoff];
 #ifdef __BIG_ENDIAN_BGRA__					
-#if BPP == 16
+if (Bpp == 16) {
 							if ((abpixel & 0x000000FF) != 0) {
 							/* pixel is not transparent; have to
 							 * plot something */								
@@ -514,8 +581,9 @@ bitmap(nsfb_t *nsfb,
 									*(pvideo + xloop) = colour_be_to_pixel(
 											nsfb, abpixel);			
 
-								}								
-#elif BPP == 32
+								}	
+				}				
+else if (Bpp == 32) {
 							if ((abpixel & 0x000000FF) != 0) {
 								/* pixel is not transparent; have to
 								 * plot something */
@@ -533,9 +601,9 @@ bitmap(nsfb_t *nsfb,
 								/* plot pixel */						
 								*(pvideo + xloop) = colour_rgba_to_pixel_bgra(
 										nsfb, abpixel);
-								}		
-#endif	/*BPP */
-#else
+							}
+					}			
+else /*BPP */  {
 							if ((abpixel & 0xFF000000) != 0) {
 								/* pixel is not transparent; have to
 								 * plot something */
@@ -553,6 +621,7 @@ bitmap(nsfb_t *nsfb,
 								/* plot pixel */
 								*(pvideo + xloop) = colour_to_pixel(nsfb, abpixel);
 							}
+				}			
 #endif /*__BIG_ENDIAN_BGRA__ */
                         }
                         pvideo += PLOT_LINELEN(nsfb->linelen);
@@ -562,12 +631,11 @@ bitmap(nsfb_t *nsfb,
                         for (xloop = 0; xloop < width; xloop++) {
                                 abpixel = pixel[yloop + xloop + xoff];
 #ifdef __BIG_ENDIAN_BGRA__	
-	#if BPP == 16
+	if (Bpp == 16)
 								*(pvideo + xloop) = colour_be_to_pixel(nsfb, abpixel);
-	#elif BPP == 32						
-								*(pvideo + xloop) = colour_rgba_to_pixel_bgra(nsfb, abpixel);
-	#endif			
-#else
+	else if (Bpp == 32)					
+								*(pvideo + xloop) = colour_rgba_to_pixel_bgra(nsfb, abpixel);		
+	else
 								*(pvideo + xloop) = colour_to_pixel(nsfb, abpixel);
 #endif
                         }
@@ -599,12 +667,11 @@ static bool readrect(nsfb_t *nsfb, nsfb_bbox_t *rect, nsfb_colour_t *buffer)
         for (yloop = rect->y0; yloop < rect->y1; yloop += 1) {
                 for (xloop = 0; xloop < width; xloop++) {
 #ifdef __BIG_ENDIAN_BGRA__	
-	#if BPP == 16
+	if (Bpp == 16)
 						*buffer = pixel_be_to_colour(nsfb, *(pvideo + xloop));
-	#elif BPP == 32						
-						*buffer = pixel_bgra_to_colour_rgba(nsfb, *(pvideo + xloop));
-	#endif			
-#else
+	else if (Bpp == 32)					
+						*buffer = pixel_bgra_to_colour_rgba(nsfb, *(pvideo + xloop));			
+	else
 						*buffer = pixel_to_colour(nsfb, *(pvideo + xloop));
 #endif
                         buffer++;

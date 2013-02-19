@@ -15,6 +15,7 @@
 #include <limits.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 #include "libnsfb.h"
 #include "libnsfb_plot.h"
@@ -903,6 +904,8 @@ bool select_plotters(nsfb_t *nsfb)
 
     case NSFB_FMT_ANY: /* No specific format - use surface default */
     default:
+		table = &_nsfb_16bpp_plotters;
+		nsfb->bpp = 16;
 	return false;
     }
 

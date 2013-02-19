@@ -33,7 +33,7 @@ LDFLAGS += -L/opt/share/lib -liconv
 LDFLAGS += -Wl,--whole-archive -lnsfb -ldom -Wl,--no-whole-archive  -lexpat
 LDFLAGS += -lhubbub  -lcurl -lssl -lcrypto -lSDL_image
 
-LDFLAGS += -lturbojpeg -lpng15 -lz -lcss -lwapcaplet -lparserutils -lnsfb
+LDFLAGS += -lturbojpeg -lpng15 -lz -lcss -lwapcaplet -lparserutils #-lnsfb
 LDFLAGS += -lSDL -ltheme -ldebug  -lgl_dummy -lauto -lc2
 
 ifeq ($(NETSURF_USE_JS), YES)

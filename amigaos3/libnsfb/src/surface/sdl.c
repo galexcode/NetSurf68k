@@ -22,7 +22,7 @@
 #include "cursor.h"
 
 #define nsamigaos3
-#include "/opt/netsurf/desktop/options.h"
+#include "desktop/options.h"
 
 enum nsfb_key_code_e sdl_nsfb_map[] = {
     NSFB_KEY_UNKNOWN,
@@ -518,7 +518,7 @@ static int sdl_initialise(nsfb_t *nsfb)
     enum nsfb_format_e fmt;
 	Uint32 flags;
     uint8_t bpp;	
-
+	
     if (nsfb->surface_priv != NULL)
         return -1;
 
@@ -533,6 +533,7 @@ static int sdl_initialise(nsfb_t *nsfb)
     }
     bpp = SDL_VideoModeOK(nsfb->width,nsfb->height,16, SDL_HWSURFACE);
 		if (!bpp)return 0;
+	Bpp = bpp;
 
     if ((bpp == 8) || (bpp == 24) || (nsoption_int(fullscreen) == 1))
 		{ flags = SDL_HWSURFACE | SDL_FULLSCREEN; bpp = nsfb->bpp;}
@@ -552,13 +553,16 @@ static int sdl_initialise(nsfb_t *nsfb)
     sdl_fmt = sdl_screen->format;
 
     switch (sdl_fmt->BitsPerPixel) {
-    case 32:
+    case 32:	
         if (sdl_fmt->Rshift == 0)
             fmt = NSFB_FMT_XBGR8888;
         else
-            fmt = NSFB_FMT_XBGR8888;
+            fmt = NSFB_FMT_XRGB8888;
         break;
-
+	case 16:		 // Arcz
+			fmt = NSFB_FMT_RGB565;
+		break;
+	
     default:
         fmt = nsfb->format;
         break;

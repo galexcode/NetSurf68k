@@ -17,6 +17,8 @@
 #include "libnsfb.h"
 #include "libnsfb_plot.h"
 
+uint8_t Bpp;
+ 
 enum nsfb_palette_type_e {
 	NSFB_PALETTE_EMPTY,     /**< empty palette object */
 	NSFB_PALETTE_NSFB_8BPP, /**< libnsfb's own 8bpp palette */

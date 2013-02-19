@@ -2,7 +2,7 @@ http_proxy:0
 http_proxy_port:8080
 http_proxy_auth:0
 font_size:140
-font_min_size:85
+font_min_size:50
 font_sans:Progdir:Fonts/DejaVuSans.ttf
 font_serif:Progdir:Fonts/DejaVuSerif.ttf
 font_mono:Progdir:Fonts/DejaVuSansMono.ttf
@@ -105,13 +105,13 @@ fb_face_monospace_bold:Progdir:Fonts/DejaVuSansMono-Bold.ttf
 fb_face_cursive:Progdir:Fonts/DejaVuSans-Oblique.ttf
 fb_face_fantasy:Progdir:Fonts/DejaVuSans.ttf
 favourite_1_url:www.netsurf-browser.org
-favourite_1_label:NetSurf Web Browser
+favourite_1_label:NetSurf
 favourite_2_url:amikit.amiga.sk
-favourite_2_label:AmiKit F
+favourite_2_label:AmiKit
 favourite_3_url:www.amigaworld.net
 favourite_3_label:Amigaworld
 favourite_4_url:www.lemonamiga.com
-favourite_4_label:Lemon Amig
+favourite_4_label:Lemon
 favourite_5_url:http://www.amiga.org/index.php
 favourite_5_label:Amiga.org
 favourite_6_url:http://aminet.net/
@@ -119,11 +119,11 @@ favourite_6_label:Aminet
 favourite_7_url:http://amp.dascene.net/home.php
 favourite_7_label:AMP
 favourite_8_url:www.ppa.pl
-favourite_8_label:Amiga - Po
+favourite_8_label:PPA
 favourite_9_url:http://eab.abime.net/
 favourite_9_label:EAB
 favourite_10_url:www.amigans.net
-favourite_10_label:Software News - ProAction 1.5 Released - News - The Amigans website
+favourite_10_label:Amigans
 favourite_11_url:aiab.ultimateamiga.co.uk
 favourite_11_label:Jaybee's AmigaInABox!
 favourite_12_url:www.amiga-news.de

@@ -1,7 +1,7 @@
 [Project]
 FileName=Netsurf.dev
 Name=Netsurf
-UnitCount=135
+UnitCount=119
 PchHead=-1
 PchSource=-1
 Ver=3
@@ -11,10 +11,10 @@ ProfileIndex=0
 Folders=amigaos3,amigaos3/fbtk,content,content/fetchers,css,desktop,framebuffer,framebuffer/fbtk,image,javascript,render,utils,utils/http
 
 [VersionInfo]
-Major=0
-Minor=1
-Release=1
-Build=1
+Major=3
+Minor=0
+Release=0
+Build=0
 LanguageID=1033
 CharsetID=1252
 CompanyName=
@@ -33,18 +33,18 @@ AutoIncBuildNrOnCompile=0
 ProfileName=Amiga_m68k
 Type=1
 ObjFiles=
-Includes=
-Libs=
-ResourceIncludes=
+Includes=E:\opt\share\include;E:\projects\netsurf;E:\usr\local\amiga\m68k-amigaos\sys-include;E:\usr\local\amiga\m68k-amigaos\include
+Libs=E:\opt\share\lib
+ResourceIncludes=E:\usr\local\amiga\m68k-amigaos\bin;E:\projects\netsurf
 MakeIncludes=
-Compiler=-s -O3 -m68060 -mnobitfield _@@_
+Compiler=-std=c99 -O3 -m68060 -mnobitfield -s_@@_
 CppCompiler=
-Linker=_@@_
-PreprocDefines=override  NETSURF_FB_FRONTEND := sdl_@@__@@_override  NETSURF_FB_RESPATH_sdl := /PROGDIR:Resources/_@@__@@_override  NETSURF_FB_FONTLIB := freetype_@@__@@_override  NETSURF_STRIP_BINARY := NO_@@__@@_override  NETSURF_USE_LIBICONV_PLUG := NO_@@__@@_override  NETSURF_USE_MNG := NO_@@__@@_override  NETSURF_USE_VIDEO := NO_@@__@@_override  NETSURF_USE_MOZJS := NO_@@__@@_override  NETSURF_USE_JS := NO_@@__@@_override  NETSURF_FB_FONTPATH := /PROGDIR:Fonts/_@@__@@_
-CompilerSettings=0000000000000000000000
+Linker=-Wl,--whole-archive -lnsfb -ldom -Wl,--no-whole-archive_@@_-lhubbub -lcss_@@_-lwapcaplet -lparserutils_@@_-lnsgif -lnsbmp_@@_-lcurl -lssl -lcrypto_@@_-liconv -lexpat_@@_-lSDL_image -lturbojpeg _@@_-lpng15 -lfreetype2  -lz_@@_-lSDL -lgl_dummy -ltheme _@@_-lauto -lc2 -ldebug_@@_
+PreprocDefines=nsamigaos3_@@_NETSURF_USE_JS=NO_@@_NETSURF_USE_BMP=YES_@@_NETSURF_USE_GIF=YES_@@_NETSURF_USE_JPEG=YES_@@_NETSURF_USE_PNG=YES_@@_WITH_PNG_@@_WITH_BMP_@@_WITH_GIF_@@_WITH_JPEG_@@_CROSS_COMPILE_@@_FB_USE_FREETYPE=YES_@@_NETSURF_USE_LIBICONV_PLUG=NO_@@_NETSURF_USE_ROSPRITE=NO_@@_NETSURF_USE_MNG=NO_@@_NETSURF_USE_WEBP=NO_@@_NETSURF_USE_NSSVG=NO_@@_NETSURF_FB_FRONTEND=sdl_@@_NETSURF_FB_RESPATH_sdl=/PROGDIR:Resources/_@@_NETSURF_FB_FONTLIB=freetype_@@_NETSURF_STRIP_BINARY=YES_@@_NETSURF_USE_VIDEO=NO_@@_NETSURF_USE_MOZJS=NO_@@_NETSURF_FB_FONTPATH=/ProgDir:Fonts/_@@_NETSURF_FB_RESPATH=/PROGDIR:Resources/_@@__BSD_SOURCE_@@__XOPEN_SOURCE=600_@@__POSIX_C_SOURCE=200112L_@@_PATH_MAX=1024_@@_
+CompilerSettings=0000000000001000000000
 Icon=
-ExeOutput=
-ObjectOutput=
+ExeOutput=..\netsurf
+ObjectOutput=obj
 OverrideOutput=0
 OverrideOutputName=Netsurf.exe
 HostApplication=
@@ -57,14 +57,14 @@ CompilerSet=4
 compilerType=0
 
 [Unit1]
-FileName=amigaos3\clipboard.c
+FileName=amigaos3\ami_clipboard.c
 CompileCpp=0
 Folder=amigaos3
 Compile=1
 Link=1
 Priority=1000
 OverrideBuildCmd=0
-BuildCmd=
+BuildCmd=$(CC) -c clipboard.c -o obj/clipboard.o $(CFLAGS)
 
 [Unit2]
 FileName=amigaos3\findfile.c
@@ -96,27 +96,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit5]
-FileName=amigaos3\gui_org.c
-CompileCpp=0
-Folder=amigaos3
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit7]
-FileName=amigaos3\misc.c
-CompileCpp=0
-Folder=amigaos3
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit8]
 FileName=amigaos3\version.c
 CompileCpp=0
 Folder=amigaos3
@@ -126,7 +106,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit9]
+[Unit8]
 FileName=amigaos3\fbtk\event.c
 CompileCpp=0
 Folder=amigaos3/fbtk
@@ -136,7 +116,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit10]
+[Unit9]
 FileName=amigaos3\fbtk\osk.c
 CompileCpp=0
 Folder=amigaos3/fbtk
@@ -146,7 +126,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit11]
+[Unit10]
 FileName=amigaos3\fbtk\scroll.c
 CompileCpp=0
 Folder=amigaos3/fbtk
@@ -156,7 +136,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit12]
+[Unit11]
 FileName=amigaos3\fbtk\text.c
 CompileCpp=0
 Folder=amigaos3/fbtk
@@ -166,7 +146,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit13]
+[Unit12]
 FileName=content\content.c
 CompileCpp=0
 Folder=content
@@ -176,7 +156,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit14]
+[Unit13]
 FileName=content\content_factory.c
 CompileCpp=0
 Folder=content
@@ -186,7 +166,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit15]
+[Unit14]
 FileName=content\dirlist.c
 CompileCpp=0
 Folder=content
@@ -196,7 +176,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit16]
+[Unit15]
 FileName=content\fetch.c
 CompileCpp=0
 Folder=content
@@ -206,7 +186,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit17]
+[Unit16]
 FileName=content\hlcache.c
 CompileCpp=0
 Folder=content
@@ -216,7 +196,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit18]
+[Unit17]
 FileName=content\llcache.c
 CompileCpp=0
 Folder=content
@@ -226,7 +206,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit19]
+[Unit18]
 FileName=content\mimesniff.c
 CompileCpp=0
 Folder=content
@@ -236,7 +216,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit20]
+[Unit19]
 FileName=content\urldb.c
 CompileCpp=0
 Folder=content
@@ -246,7 +226,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit21]
+[Unit20]
 FileName=content\fetchers\about.c
 CompileCpp=0
 Folder=content/fetchers
@@ -256,7 +236,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit22]
+[Unit21]
 FileName=content\fetchers\curl.c
 CompileCpp=0
 Folder=content/fetchers
@@ -266,7 +246,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit23]
+[Unit22]
 FileName=content\fetchers\data.c
 CompileCpp=0
 Folder=content/fetchers
@@ -276,7 +256,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit24]
+[Unit23]
 FileName=content\fetchers\file.c
 CompileCpp=0
 Folder=content/fetchers
@@ -286,7 +266,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit25]
+[Unit24]
 FileName=content\fetchers\resource.c
 CompileCpp=0
 Folder=content/fetchers
@@ -296,7 +276,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit26]
+[Unit25]
 FileName=css\css.c
 CompileCpp=0
 Folder=css
@@ -306,7 +286,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit27]
+[Unit26]
 FileName=css\dump.c
 CompileCpp=0
 Folder=css
@@ -316,7 +296,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit28]
+[Unit27]
 FileName=css\internal.c
 CompileCpp=0
 Folder=css
@@ -326,7 +306,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit29]
+[Unit28]
 FileName=css\select.c
 CompileCpp=0
 Folder=css
@@ -336,17 +316,17 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit30]
-FileName=css\utils.c
+[Unit29]
+FileName=css\css_utils.c
 CompileCpp=0
 Folder=css
 Compile=1
 Link=1
 Priority=1000
 OverrideBuildCmd=0
-BuildCmd=
+BuildCmd=$(CC) -c utils.c -o obj/css_utils.o $(CFLAGS)
 
-[Unit31]
+[Unit30]
 FileName=desktop\browser.c
 CompileCpp=0
 Folder=desktop
@@ -356,7 +336,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit32]
+[Unit31]
 FileName=desktop\cookies.c
 CompileCpp=0
 Folder=desktop
@@ -366,7 +346,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit33]
+[Unit32]
 FileName=desktop\download.c
 CompileCpp=0
 Folder=desktop
@@ -376,7 +356,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit34]
+[Unit33]
 FileName=desktop\frames.c
 CompileCpp=0
 Folder=desktop
@@ -386,7 +366,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit35]
+[Unit34]
 FileName=desktop\history_core.c
 CompileCpp=0
 Folder=desktop
@@ -396,7 +376,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit36]
+[Unit35]
 FileName=desktop\history_global_core.c
 CompileCpp=0
 Folder=desktop
@@ -406,7 +386,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit37]
+[Unit36]
 FileName=desktop\hotlist.c
 CompileCpp=0
 Folder=desktop
@@ -416,7 +396,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit38]
+[Unit37]
 FileName=desktop\knockout.c
 CompileCpp=0
 Folder=desktop
@@ -426,7 +406,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit39]
+[Unit38]
 FileName=desktop\mouse.c
 CompileCpp=0
 Folder=desktop
@@ -436,7 +416,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit40]
+[Unit39]
 FileName=desktop\netsurf.c
 CompileCpp=0
 Folder=desktop
@@ -446,7 +426,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit41]
+[Unit40]
 FileName=desktop\options.c
 CompileCpp=0
 Folder=desktop
@@ -456,7 +436,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit42]
+[Unit41]
 FileName=desktop\plot_style.c
 CompileCpp=0
 Folder=desktop
@@ -466,7 +446,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit43]
+[Unit42]
 FileName=desktop\print.c
 CompileCpp=0
 Folder=desktop
@@ -476,7 +456,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit44]
+[Unit43]
 FileName=desktop\save_complete.c
 CompileCpp=0
 Folder=desktop
@@ -486,7 +466,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit45]
+[Unit44]
 FileName=desktop\save_text.c
 CompileCpp=0
 Folder=desktop
@@ -496,7 +476,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit46]
+[Unit45]
 FileName=desktop\scrollbar.c
 CompileCpp=0
 Folder=desktop
@@ -506,8 +486,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit47]
-FileName=desktop\search.c
+[Unit46]
+FileName=desktop\desktop_search.c
 CompileCpp=0
 Folder=desktop
 Compile=1
@@ -516,7 +496,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit48]
+[Unit47]
 FileName=desktop\searchweb.c
 CompileCpp=0
 Folder=desktop
@@ -526,7 +506,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit49]
+[Unit48]
 FileName=desktop\selection.c
 CompileCpp=0
 Folder=desktop
@@ -536,7 +516,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit50]
+[Unit49]
 FileName=desktop\sslcert.c
 CompileCpp=0
 Folder=desktop
@@ -546,7 +526,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit51]
+[Unit50]
 FileName=desktop\textarea.c
 CompileCpp=0
 Folder=desktop
@@ -556,7 +536,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit52]
+[Unit51]
 FileName=desktop\textinput.c
 CompileCpp=0
 Folder=desktop
@@ -566,17 +546,17 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit53]
-FileName=desktop\thumbnail.c
+[Unit52]
+FileName=desktop\destktop_thumbnail.c
 CompileCpp=0
 Folder=desktop
 Compile=1
 Link=1
 Priority=1000
 OverrideBuildCmd=0
-BuildCmd=
+BuildCmd=$(CC) -c thumbnail.c -o obj/desktop_thumbnail.o $(CFLAGS)
 
-[Unit54]
+[Unit53]
 FileName=desktop\tree.c
 CompileCpp=0
 Folder=desktop
@@ -586,7 +566,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit55]
+[Unit54]
 FileName=desktop\tree_url_node.c
 CompileCpp=0
 Folder=desktop
@@ -597,26 +577,6 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit56]
-FileName=desktop\version.c
-CompileCpp=0
-Folder=desktop
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit57]
-FileName=image\bmp.c
-CompileCpp=0
-Folder=image
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit58]
 FileName=image\gif.c
 CompileCpp=0
 Folder=image
@@ -626,7 +586,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit59]
+[Unit57]
 FileName=image\ico.c
 CompileCpp=0
 Folder=image
@@ -636,7 +596,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit60]
+[Unit58]
 FileName=image\image.c
 CompileCpp=0
 Folder=image
@@ -646,7 +606,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit61]
+[Unit59]
 FileName=image\image_cache.c
 CompileCpp=0
 Folder=image
@@ -656,7 +616,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit62]
+[Unit60]
 FileName=image\jpeg.c
 CompileCpp=0
 Folder=image
@@ -666,127 +626,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit63]
-FileName=image\mng.c
-CompileCpp=0
-Folder=image
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit64]
-FileName=image\nssprite.c
-CompileCpp=0
-Folder=image
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit65]
-FileName=image\png.c
-CompileCpp=0
-Folder=image
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit66]
-FileName=image\rsvg.c
-CompileCpp=0
-Folder=image
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit67]
-FileName=image\svg.c
-CompileCpp=0
-Folder=image
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit68]
-FileName=image\video.c
-CompileCpp=0
-Folder=image
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit69]
-FileName=image\webp.c
-CompileCpp=0
-Folder=image
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit70]
-FileName=javascript\content.c
-CompileCpp=0
-Folder=javascript
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit71]
-FileName=javascript\jsapi.c
-CompileCpp=0
-Folder=javascript
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit72]
-FileName=javascript\none.c
-CompileCpp=0
-Folder=javascript
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit73]
-FileName=render\box.c
-CompileCpp=0
-Folder=render
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit74]
-FileName=render\box_construct.c
-CompileCpp=0
-Folder=render
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit75]
 FileName=render\box_normalise.c
 CompileCpp=0
 Folder=render
@@ -796,7 +636,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit76]
+[Unit66]
 FileName=render\font.c
 CompileCpp=0
 Folder=render
@@ -806,7 +646,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit77]
+[Unit67]
 FileName=render\form.c
 CompileCpp=0
 Folder=render
@@ -816,7 +656,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit78]
+[Unit68]
 FileName=render\html.c
 CompileCpp=0
 Folder=render
@@ -826,7 +666,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit79]
+[Unit69]
 FileName=render\html_forms.c
 CompileCpp=0
 Folder=render
@@ -836,7 +676,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit80]
+[Unit70]
 FileName=render\html_interaction.c
 CompileCpp=0
 Folder=render
@@ -846,7 +686,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit81]
+[Unit71]
 FileName=render\html_redraw.c
 CompileCpp=0
 Folder=render
@@ -856,7 +696,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit82]
+[Unit72]
 FileName=render\html_script.c
 CompileCpp=0
 Folder=render
@@ -866,7 +706,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit83]
+[Unit73]
 FileName=render\imagemap.c
 CompileCpp=0
 Folder=render
@@ -876,7 +716,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit84]
+[Unit74]
 FileName=render\layout.c
 CompileCpp=0
 Folder=render
@@ -886,7 +726,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit85]
+[Unit75]
 FileName=render\list.c
 CompileCpp=0
 Folder=render
@@ -896,7 +736,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit86]
+[Unit76]
 FileName=render\search.c
 CompileCpp=0
 Folder=render
@@ -906,7 +746,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit87]
+[Unit77]
 FileName=render\table.c
 CompileCpp=0
 Folder=render
@@ -916,17 +756,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit88]
-FileName=render\textinput.c
-CompileCpp=0
-Folder=render
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit89]
+[Unit78]
 FileName=render\textplain.c
 CompileCpp=0
 Folder=render
@@ -936,7 +766,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit90]
+[Unit79]
 FileName=utils\base64.c
 CompileCpp=0
 Folder=utils
@@ -946,7 +776,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit91]
+[Unit80]
 FileName=utils\container.c
 CompileCpp=0
 Folder=utils
@@ -956,7 +786,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit92]
+[Unit81]
 FileName=utils\corestrings.c
 CompileCpp=0
 Folder=utils
@@ -966,7 +796,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit93]
+[Unit82]
 FileName=utils\filename.c
 CompileCpp=0
 Folder=utils
@@ -976,7 +806,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit94]
+[Unit83]
 FileName=utils\filepath.c
 CompileCpp=0
 Folder=utils
@@ -986,7 +816,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit95]
+[Unit84]
 FileName=utils\hashtable.c
 CompileCpp=0
 Folder=utils
@@ -996,7 +826,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit96]
+[Unit85]
 FileName=utils\libdom.c
 CompileCpp=0
 Folder=utils
@@ -1006,7 +836,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit97]
+[Unit86]
 FileName=utils\locale.c
 CompileCpp=0
 Folder=utils
@@ -1016,7 +846,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit98]
+[Unit87]
 FileName=utils\log.c
 CompileCpp=0
 Folder=utils
@@ -1026,7 +856,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit99]
+[Unit88]
 FileName=utils\memdebug.c
 CompileCpp=0
 Folder=utils
@@ -1036,7 +866,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit100]
+[Unit89]
 FileName=utils\messages.c
 CompileCpp=0
 Folder=utils
@@ -1046,7 +876,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit101]
+[Unit90]
 FileName=utils\nsurl.c
 CompileCpp=0
 Folder=utils
@@ -1056,7 +886,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit102]
+[Unit91]
 FileName=utils\talloc.c
 CompileCpp=0
 Folder=utils
@@ -1066,7 +896,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit103]
+[Unit92]
 FileName=utils\url.c
 CompileCpp=0
 Folder=utils
@@ -1076,7 +906,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit104]
+[Unit93]
 FileName=utils\useragent.c
 CompileCpp=0
 Folder=utils
@@ -1086,7 +916,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit105]
+[Unit94]
 FileName=utils\utf8.c
 CompileCpp=0
 Folder=utils
@@ -1096,7 +926,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit106]
+[Unit95]
 FileName=utils\utils.c
 CompileCpp=0
 Folder=utils
@@ -1106,7 +936,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit107]
+[Unit96]
 FileName=utils\http\challenge.c
 CompileCpp=0
 Folder=utils/http
@@ -1116,7 +946,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit108]
+[Unit97]
 FileName=utils\http\content-disposition.c
 CompileCpp=0
 Folder=utils/http
@@ -1126,7 +956,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit109]
+[Unit98]
 FileName=utils\http\content-type.c
 CompileCpp=0
 Folder=utils/http
@@ -1136,7 +966,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit110]
+[Unit99]
 FileName=utils\http\generics.c
 CompileCpp=0
 Folder=utils/http
@@ -1146,7 +976,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit111]
+[Unit100]
 FileName=utils\http\parameter.c
 CompileCpp=0
 Folder=utils/http
@@ -1156,7 +986,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit112]
+[Unit101]
 FileName=utils\http\primitives.c
 CompileCpp=0
 Folder=utils/http
@@ -1166,7 +996,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit113]
+[Unit102]
 FileName=utils\http\www-authenticate.c
 CompileCpp=0
 Folder=utils/http
@@ -1176,7 +1006,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit114]
+[Unit103]
 FileName=framebuffer\bitmap.c
 CompileCpp=0
 Folder=framebuffer
@@ -1186,17 +1016,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit6]
-FileName=amigaos3\loadbitmap.c
-CompileCpp=0
-Folder=amigaos3
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit115]
+[Unit104]
 FileName=framebuffer\clipboard.c
 CompileCpp=0
 Folder=framebuffer
@@ -1206,7 +1026,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit116]
+[Unit105]
 FileName=framebuffer\fb_search.c
 CompileCpp=0
 Folder=framebuffer
@@ -1216,7 +1036,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit117]
+[Unit106]
 FileName=framebuffer\filetype.c
 CompileCpp=0
 Folder=framebuffer
@@ -1226,27 +1046,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit118]
-FileName=framebuffer\font_freetype.c
-CompileCpp=0
-Folder=framebuffer
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit119]
-FileName=framebuffer\font_internal.c
-CompileCpp=0
-Folder=framebuffer
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit120]
+[Unit107]
 FileName=framebuffer\framebuffer.c
 CompileCpp=0
 Folder=framebuffer
@@ -1256,7 +1056,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit121]
+[Unit108]
 FileName=framebuffer\localhistory.c
 CompileCpp=0
 Folder=framebuffer
@@ -1266,57 +1066,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit122]
-FileName=framebuffer\login.c
-CompileCpp=0
-Folder=framebuffer
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit123]
-FileName=framebuffer\nsfont_bold.c
-CompileCpp=0
-Folder=framebuffer
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit124]
-FileName=framebuffer\nsfont_italic.c
-CompileCpp=0
-Folder=framebuffer
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit125]
-FileName=framebuffer\nsfont_italic_bold.c
-CompileCpp=0
-Folder=framebuffer
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit126]
-FileName=framebuffer\nsfont_regular.c
-CompileCpp=0
-Folder=framebuffer
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit127]
+[Unit110]
 FileName=framebuffer\schedule.c
 CompileCpp=0
 Folder=framebuffer
@@ -1326,7 +1076,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit128]
+[Unit111]
 FileName=framebuffer\system_colour.c
 CompileCpp=0
 Folder=framebuffer
@@ -1336,37 +1086,37 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit129]
-FileName=framebuffer\thumbnail.c
+[Unit113]
+FileName=framebuffer\fb_tree.c
 CompileCpp=0
 Folder=framebuffer
 Compile=1
 Link=1
 Priority=1000
 OverrideBuildCmd=0
-BuildCmd=
+BuildCmd=$(CC) -c framebuffer/tree.c -o obj/fb_tree.o $(CFLAGS)
 
-[Unit130]
-FileName=framebuffer\tree.c
-CompileCpp=0
-Folder=framebuffer
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit131]
-FileName=framebuffer\fbtk\bitmap.c
+[Unit114]
+FileName=framebuffer\fbtk\fbtk_bitmap.c
 CompileCpp=0
 Folder=framebuffer/fbtk
 Compile=1
 Link=1
 Priority=1000
 OverrideBuildCmd=0
+BuildCmd=$(CC) -c framebuffer/fbtk/bitmap.c -o obj/fbtk_bitmap.o $(CFLAGS)
+
+[Unit6]
+FileName=amigaos3\misc.c
+CompileCpp=0
+Folder=amigaos3
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
 BuildCmd=
 
-[Unit132]
+[Unit115]
 FileName=framebuffer\fbtk\fbtk.c
 CompileCpp=0
 Folder=framebuffer/fbtk
@@ -1376,7 +1126,57 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit133]
+[Unit117]
+FileName=framebuffer\fbtk\user.c
+CompileCpp=0
+Folder=framebuffer/fbtk
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit118]
+FileName=framebuffer\fbtk\window.c
+CompileCpp=0
+Folder=framebuffer/fbtk
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit119]
+FileName=render\box_textarea.c
+CompileCpp=1
+Folder=render
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit120]
+FileName=framebuffer\fbtk\window.c
+CompileCpp=0
+Folder=framebuffer/fbtk
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit121]
+FileName=framebuffer\fbtk\fbtk.c
+CompileCpp=0
+Folder=framebuffer/fbtk
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit122]
 FileName=framebuffer\fbtk\fill.c
 CompileCpp=0
 Folder=framebuffer/fbtk
@@ -1386,8 +1186,118 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit134]
+[Unit123]
 FileName=framebuffer\fbtk\user.c
+CompileCpp=0
+Folder=framebuffer/fbtk
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit124]
+FileName=framebuffer\fbtk\window.c
+CompileCpp=0
+Folder=framebuffer/fbtk
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit125]
+FileName=framebuffer\fbtk\window.c
+CompileCpp=0
+Folder=framebuffer/fbtk
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit126]
+FileName=framebuffer\fbtk\window.c
+CompileCpp=0
+Folder=framebuffer/fbtk
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit127]
+FileName=framebuffer\fbtk\fbtk.c
+CompileCpp=0
+Folder=framebuffer/fbtk
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit128]
+FileName=framebuffer\fbtk\fill.c
+CompileCpp=0
+Folder=framebuffer/fbtk
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit129]
+FileName=framebuffer\fbtk\user.c
+CompileCpp=0
+Folder=framebuffer/fbtk
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit130]
+FileName=framebuffer\fbtk\window.c
+CompileCpp=0
+Folder=framebuffer/fbtk
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit131]
+FileName=framebuffer\fbtk\window.c
+CompileCpp=0
+Folder=framebuffer/fbtk
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit132]
+FileName=framebuffer\fbtk\window.c
+CompileCpp=0
+Folder=framebuffer/fbtk
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit133]
+FileName=framebuffer\fbtk\window.c
+CompileCpp=0
+Folder=framebuffer/fbtk
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit134]
+FileName=framebuffer\fbtk\window.c
 CompileCpp=0
 Folder=framebuffer/fbtk
 Compile=1
@@ -1400,6 +1310,96 @@ BuildCmd=
 FileName=framebuffer\fbtk\window.c
 CompileCpp=0
 Folder=framebuffer/fbtk
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit5]
+FileName=amigaos3\loadbitmap.c
+CompileCpp=0
+Folder=amigaos3
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit116]
+FileName=framebuffer\fbtk\fill.c
+CompileCpp=0
+Folder=framebuffer/fbtk
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit55]
+FileName=image\bmp.c
+CompileCpp=0
+Folder=image
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit61]
+FileName=image\png.c
+CompileCpp=0
+Folder=image
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit63]
+FileName=render\box.c
+CompileCpp=0
+Folder=render
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit64]
+FileName=render\box_construct.c
+CompileCpp=0
+Folder=render
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit109]
+FileName=framebuffer\login.c
+CompileCpp=0
+Folder=framebuffer
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit112]
+FileName=framebuffer\thumbnail.c
+CompileCpp=0
+Folder=framebuffer
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit62]
+FileName=javascript\none.c
+CompileCpp=0
+Folder=javascript
 Compile=1
 Link=1
 Priority=1000

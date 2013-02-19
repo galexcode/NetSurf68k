@@ -24,8 +24,8 @@
 
 #include "utils/log.h"
 
-#include "window.h"
-#include "event.h"
+//#include "window.h"
+//#include "event.h"
 
 static JSRuntime *rt; /* global runtime */
 
